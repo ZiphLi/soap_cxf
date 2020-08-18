@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ky.common.dao.OrganizationDao">
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.OrganizationBean">
+    <id column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="team_id" jdbcType="VARCHAR" property="teamId" />
+    <result column="Username" jdbcType="VARCHAR" property="username" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="parent_tel" jdbcType="VARCHAR" property="parentTel" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="link_tel" jdbcType="VARCHAR" property="linkTel" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="extend" jdbcType="VARCHAR" property="extend" />
+    <result column="yy_code" jdbcType="VARCHAR" property="yyCode" />
+    <result column="zl_server_address" jdbcType="VARCHAR" property="zlServerAddress" />
+    <result column="zl_user" jdbcType="VARCHAR" property="zlUser" />
+    <result column="zl_passwd" jdbcType="VARCHAR" property="zlPasswd" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="zh_flag" jdbcType="INTEGER" property="zhFlag" />
+    <result column="is_tq" jdbcType="INTEGER" property="isTq" />
+    <result column="xqrk" jdbcType="INTEGER" property="xqrk" />
+    <result column="erweima" jdbcType="VARCHAR" property="erweima" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    org_id, id, team_id, Username, pwd, Name, level, parent_id, parent_tel, linkman, 
+    link_tel, create_time, extend, yy_code, zl_server_address, zl_user, zl_passwd, enable, 
+    sort, zh_flag, is_tq, xqrk, erweima
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from common_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </select>
+  <select id="getParentOrgByParentId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from common_organization where org_id =
+    (select parent_id from common_organization where
+    org_id = #{orgId,jdbcType=VARCHAR} );
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from common_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.OrganizationBean">
+    insert into common_organization (org_id, id, team_id, 
+      Username, pwd, Name, 
+      level, parent_id, parent_tel, 
+      linkman, link_tel, create_time, 
+      extend, yy_code, zl_server_address, 
+      zl_user, zl_passwd, enable, 
+      sort, zh_flag, is_tq, 
+      xqrk, erweima)
+    values (#{orgId,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, #{teamId,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{parentId,jdbcType=VARCHAR}, #{parentTel,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{linkTel,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
+      #{extend,jdbcType=VARCHAR}, #{yyCode,jdbcType=VARCHAR}, #{zlServerAddress,jdbcType=VARCHAR}, 
+      #{zlUser,jdbcType=VARCHAR}, #{zlPasswd,jdbcType=VARCHAR}, #{enable,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{zhFlag,jdbcType=INTEGER}, #{isTq,jdbcType=INTEGER}, 
+      #{xqrk,jdbcType=INTEGER}, #{erweima,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.OrganizationBean">
+    insert into common_organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="teamId != null">
+        team_id,
+      </if>
+      <if test="username != null">
+        Username,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="parentTel != null">
+        parent_tel,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="linkTel != null">
+        link_tel,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="extend != null">
+        extend,
+      </if>
+      <if test="yyCode != null">
+        yy_code,
+      </if>
+      <if test="zlServerAddress != null">
+        zl_server_address,
+      </if>
+      <if test="zlUser != null">
+        zl_user,
+      </if>
+      <if test="zlPasswd != null">
+        zl_passwd,
+      </if>
+      <if test="enable != null">
+        enable,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="zhFlag != null">
+        zh_flag,
+      </if>
+      <if test="isTq != null">
+        is_tq,
+      </if>
+      <if test="xqrk != null">
+        xqrk,
+      </if>
+      <if test="erweima != null">
+        erweima,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null">
+        #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTel != null">
+        #{parentTel,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null">
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="extend != null">
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="yyCode != null">
+        #{yyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zlServerAddress != null">
+        #{zlServerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUser != null">
+        #{zlUser,jdbcType=VARCHAR},
+      </if>
+      <if test="zlPasswd != null">
+        #{zlPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="zhFlag != null">
+        #{zhFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isTq != null">
+        #{isTq,jdbcType=INTEGER},
+      </if>
+      <if test="xqrk != null">
+        #{xqrk,jdbcType=INTEGER},
+      </if>
+      <if test="erweima != null">
+        #{erweima,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.OrganizationBean">
+    update common_organization
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="teamId != null">
+        team_id = #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        Username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTel != null">
+        parent_tel = #{parentTel,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null">
+        link_tel = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="extend != null">
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="yyCode != null">
+        yy_code = #{yyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zlServerAddress != null">
+        zl_server_address = #{zlServerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUser != null">
+        zl_user = #{zlUser,jdbcType=VARCHAR},
+      </if>
+      <if test="zlPasswd != null">
+        zl_passwd = #{zlPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        enable = #{enable,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="zhFlag != null">
+        zh_flag = #{zhFlag,jdbcType=INTEGER},
+      </if>
+      <if test="isTq != null">
+        is_tq = #{isTq,jdbcType=INTEGER},
+      </if>
+      <if test="xqrk != null">
+        xqrk = #{xqrk,jdbcType=INTEGER},
+      </if>
+      <if test="erweima != null">
+        erweima = #{erweima,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.OrganizationBean">
+    update common_organization
+    set id = #{id,jdbcType=VARCHAR},
+      team_id = #{teamId,jdbcType=VARCHAR},
+      Username = #{username,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      parent_tel = #{parentTel,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      extend = #{extend,jdbcType=VARCHAR},
+      yy_code = #{yyCode,jdbcType=VARCHAR},
+      zl_server_address = #{zlServerAddress,jdbcType=VARCHAR},
+      zl_user = #{zlUser,jdbcType=VARCHAR},
+      zl_passwd = #{zlPasswd,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      zh_flag = #{zhFlag,jdbcType=INTEGER},
+      is_tq = #{isTq,jdbcType=INTEGER},
+      xqrk = #{xqrk,jdbcType=INTEGER},
+      erweima = #{erweima,jdbcType=VARCHAR}
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.WdEhrBeanDao" >
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.WdEhrBean" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="dah" property="dah" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sfz" property="sfz" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="is_gxy" property="isGxy" jdbcType="VARCHAR" />
+    <result column="is_tnb" property="isTnb" jdbcType="VARCHAR" />
+    <result column="gxy_enable" property="gxyEnable" jdbcType="VARCHAR" />
+    <result column="tnb_enable" property="tnbEnable" jdbcType="VARCHAR" />
+    <result column="is_sign" property="isSign" jdbcType="VARCHAR" />
+    <result column="gw_dah" property="gwDah" jdbcType="VARCHAR" />
+    <result column="gw_dah_id" property="gwDahId" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP" />
+    <result column="fol_is_standard" property="folIsStandard" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dah, status, xm, sfz, gender, address, tel, birthday, nation, type, is_gxy, is_tnb, 
+    gxy_enable, tnb_enable, is_sign, gw_dah, gw_dah_id, org_id, org_name, create_time, 
+    update_time, delete_time, fol_is_standard
+  </sql>
+
+  <select id="getAllEhrByOrgId" resultMap="BaseResultMap"  >
+    select
+    *
+    from wd_ehr
+    where org_id like CONCAT("%",#{orgId},"%") order by org_id asc,sfz asc ;
+  </select>
+  <select id="getEhrByParam" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from wd_ehr
+    where sfz = #{sfz,jdbcType=VARCHAR}
+    and org_id = #{orgId,jdbcType=VARCHAR} limit 0,1;
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wd_ehr
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wd_ehr
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.WdEhrBean" >
+    insert into wd_ehr (id, dah, status, 
+      xm, sfz, gender, address, 
+      tel, birthday, nation, 
+      type, is_gxy, is_tnb, 
+      gxy_enable, tnb_enable, is_sign, 
+      gw_dah, gw_dah_id, org_id, 
+      org_name, create_time, update_time, 
+      delete_time, fol_is_standard)
+    values (#{id,jdbcType=VARCHAR}, #{dah,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{xm,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{nation,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{isGxy,jdbcType=VARCHAR}, #{isTnb,jdbcType=VARCHAR}, 
+      #{gxyEnable,jdbcType=VARCHAR}, #{tnbEnable,jdbcType=VARCHAR}, #{isSign,jdbcType=VARCHAR}, 
+      #{gwDah,jdbcType=VARCHAR}, #{gwDahId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{deleteTime,jdbcType=TIMESTAMP}, #{folIsStandard,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.WdEhrBean" >
+    insert into wd_ehr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dah != null" >
+        dah,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="sfz != null" >
+        sfz,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="isGxy != null" >
+        is_gxy,
+      </if>
+      <if test="isTnb != null" >
+        is_tnb,
+      </if>
+      <if test="gxyEnable != null" >
+        gxy_enable,
+      </if>
+      <if test="tnbEnable != null" >
+        tnb_enable,
+      </if>
+      <if test="isSign != null" >
+        is_sign,
+      </if>
+      <if test="gwDah != null" >
+        gw_dah,
+      </if>
+      <if test="gwDahId != null" >
+        gw_dah_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteTime != null" >
+        delete_time,
+      </if>
+      <if test="folIsStandard != null" >
+        fol_is_standard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dah != null" >
+        #{dah,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isGxy != null" >
+        #{isGxy,jdbcType=VARCHAR},
+      </if>
+      <if test="isTnb != null" >
+        #{isTnb,jdbcType=VARCHAR},
+      </if>
+      <if test="gxyEnable != null" >
+        #{gxyEnable,jdbcType=VARCHAR},
+      </if>
+      <if test="tnbEnable != null" >
+        #{tnbEnable,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null" >
+        #{isSign,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDah != null" >
+        #{gwDah,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDahId != null" >
+        #{gwDahId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null" >
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="folIsStandard != null" >
+        #{folIsStandard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.WdEhrBean" >
+    update wd_ehr
+    <set >
+      <if test="dah != null" >
+        dah = #{dah,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        sfz = #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isGxy != null" >
+        is_gxy = #{isGxy,jdbcType=VARCHAR},
+      </if>
+      <if test="isTnb != null" >
+        is_tnb = #{isTnb,jdbcType=VARCHAR},
+      </if>
+      <if test="gxyEnable != null" >
+        gxy_enable = #{gxyEnable,jdbcType=VARCHAR},
+      </if>
+      <if test="tnbEnable != null" >
+        tnb_enable = #{tnbEnable,jdbcType=VARCHAR},
+      </if>
+      <if test="isSign != null" >
+        is_sign = #{isSign,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDah != null" >
+        gw_dah = #{gwDah,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDahId != null" >
+        gw_dah_id = #{gwDahId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null" >
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="folIsStandard != null" >
+        fol_is_standard = #{folIsStandard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.WdEhrBean" >
+    update wd_ehr
+    set dah = #{dah,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      nation = #{nation,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      is_gxy = #{isGxy,jdbcType=VARCHAR},
+      is_tnb = #{isTnb,jdbcType=VARCHAR},
+      gxy_enable = #{gxyEnable,jdbcType=VARCHAR},
+      tnb_enable = #{tnbEnable,jdbcType=VARCHAR},
+      is_sign = #{isSign,jdbcType=VARCHAR},
+      gw_dah = #{gwDah,jdbcType=VARCHAR},
+      gw_dah_id = #{gwDahId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      fol_is_standard = #{folIsStandard,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

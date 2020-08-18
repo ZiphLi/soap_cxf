@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ky.common.dao.GrjbxxDao">
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.GrjbxxBean">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="card" jdbcType="VARCHAR" property="card" />
+    <result column="tmh" jdbcType="VARCHAR" property="tmh" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="index_no" jdbcType="INTEGER" property="indexNo" />
+    <result column="formerly_id" jdbcType="VARCHAR" property="formerlyId" />
+    <result column="tjrq" jdbcType="TIMESTAMP" property="tjrq" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="fhdyy" jdbcType="VARCHAR" property="fhdyy" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gengder" jdbcType="INTEGER" property="gengder" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="zjlx" jdbcType="VARCHAR" property="zjlx" />
+    <result column="sfz" jdbcType="VARCHAR" property="sfz" />
+    <result column="csrq" jdbcType="TIMESTAMP" property="csrq" />
+    <result column="hjzt" jdbcType="VARCHAR" property="hjzt" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="brdh" jdbcType="VARCHAR" property="brdh" />
+    <result column="lxrxm" jdbcType="VARCHAR" property="lxrxm" />
+    <result column="czlx" jdbcType="VARCHAR" property="czlx" />
+    <result column="minz" jdbcType="VARCHAR" property="minz" />
+    <result column="xuex" jdbcType="VARCHAR" property="xuex" />
+    <result column="RH" jdbcType="VARCHAR" property="rh" />
+    <result column="wenhcd" jdbcType="VARCHAR" property="wenhcd" />
+    <result column="gzdw" jdbcType="VARCHAR" property="gzdw" />
+    <result column="zhiye" jdbcType="VARCHAR" property="zhiye" />
+    <result column="ldqd" jdbcType="VARCHAR" property="ldqd" />
+    <result column="hyzk" jdbcType="VARCHAR" property="hyzk" />
+    <result column="yyzffs" jdbcType="VARCHAR" property="yyzffs" />
+    <result column="czjm_ybkh" jdbcType="VARCHAR" property="czjmYbkh" />
+    <result column="jmjbyl_ybkh" jdbcType="VARCHAR" property="jmjbylYbkh" />
+    <result column="pkjz_ybkh" jdbcType="VARCHAR" property="pkjzYbkh" />
+    <result column="ywgms" jdbcType="VARCHAR" property="ywgms" />
+    <result column="ywgms_detail" jdbcType="VARCHAR" property="ywgmsDetail" />
+    <result column="shen" jdbcType="VARCHAR" property="shen" />
+    <result column="shi" jdbcType="VARCHAR" property="shi" />
+    <result column="qu" jdbcType="VARCHAR" property="qu" />
+    <result column="zhen" jdbcType="VARCHAR" property="zhen" />
+    <result column="cun" jdbcType="VARCHAR" property="cun" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="hj_address" jdbcType="VARCHAR" property="hjAddress" />
+    <result column="ylbxh" jdbcType="VARCHAR" property="ylbxh" />
+    <result column="xnhh" jdbcType="VARCHAR" property="xnhh" />
+    <result column="jws_xbs" jdbcType="VARCHAR" property="jwsXbs" />
+    <result column="jws" jdbcType="VARCHAR" property="jws" />
+    <result column="shous" jdbcType="VARCHAR" property="shous" />
+    <result column="shouss" jdbcType="VARCHAR" property="shouss" />
+    <result column="wais" jdbcType="VARCHAR" property="wais" />
+    <result column="waiss" jdbcType="VARCHAR" property="waiss" />
+    <result column="shuxue" jdbcType="VARCHAR" property="shuxue" />
+    <result column="shuxues" jdbcType="VARCHAR" property="shuxues" />
+    <result column="jzs" jdbcType="VARCHAR" property="jzs" />
+    <result column="jzs_detail" jdbcType="VARCHAR" property="jzsDetail" />
+    <result column="baols" jdbcType="VARCHAR" property="baols" />
+    <result column="baols_detail" jdbcType="VARCHAR" property="baolsDetail" />
+    <result column="yichuanbs" jdbcType="VARCHAR" property="yichuanbs" />
+    <result column="yichuanbs_detail" jdbcType="VARCHAR" property="yichuanbsDetail" />
+    <result column="cjqk" jdbcType="VARCHAR" property="cjqk" />
+    <result column="cjqk_detail" jdbcType="VARCHAR" property="cjqkDetail" />
+    <result column="ycqk" jdbcType="VARCHAR" property="ycqk" />
+    <result column="yc_yc" jdbcType="INTEGER" property="ycYc" />
+    <result column="yc_cc" jdbcType="INTEGER" property="ycCc" />
+    <result column="cfpfss" jdbcType="VARCHAR" property="cfpfss" />
+    <result column="ranllx" jdbcType="VARCHAR" property="ranllx" />
+    <result column="yinshui" jdbcType="VARCHAR" property="yinshui" />
+    <result column="cesuo" jdbcType="VARCHAR" property="cesuo" />
+    <result column="qinchul" jdbcType="VARCHAR" property="qinchul" />
+    <result column="dcsj" jdbcType="TIMESTAMP" property="dcsj" />
+    <result column="cjys" jdbcType="VARCHAR" property="cjys" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="hzxm" jdbcType="VARCHAR" property="hzxm" />
+    <result column="hz_sfz" jdbcType="VARCHAR" property="hzSfz" />
+    <result column="jtrks" jdbcType="VARCHAR" property="jtrks" />
+    <result column="jtjg" jdbcType="INTEGER" property="jtjg" />
+    <result column="jzqk" jdbcType="VARCHAR" property="jzqk" />
+    <result column="up_msg" jdbcType="VARCHAR" property="upMsg" />
+    <result column="da_create_time" jdbcType="TIMESTAMP" property="daCreateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, card, tmh, type, index_no, formerly_id, tjrq, year, fhdyy, name, gengder, age, 
+    zjlx, sfz, csrq, hjzt, lxdh, brdh, lxrxm, czlx, minz, xuex, RH, wenhcd, gzdw, zhiye, 
+    ldqd, hyzk, yyzffs, czjm_ybkh, jmjbyl_ybkh, pkjz_ybkh, ywgms, ywgms_detail, shen, 
+    shi, qu, zhen, cun, address, hj_address, ylbxh, xnhh, jws_xbs, jws, shous, shouss, 
+    wais, waiss, shuxue, shuxues, jzs, jzs_detail, baols, baols_detail, yichuanbs, yichuanbs_detail, 
+    cjqk, cjqk_detail, ycqk, yc_yc, yc_cc, cfpfss, ranllx, yinshui, cesuo, qinchul, dcsj, 
+    cjys, org_id, org_name, hzxm, hz_sfz, jtrks, jtjg, jzqk, up_msg
+  </sql>
+  <select id="getGrjbxxListByOrgId" resultMap="BaseResultMap" >
+     select  *  from common_examnationgrjbxx where
+  org_id like CONCAT("%",#{orgId},"%")
+ and (up_msg is NULL or up_msg ='' or up_msg NOT LIKE '%成功%')
+  order by org_id asc,tjrq asc ;
+  </select>
+  <select id="getGrjbxxListForGfByOrgId" resultMap="BaseResultMap" >
+     select  *  from common_examnationgrjbxx where
+  org_id like CONCAT("%",#{orgId},"%")
+--   and (up_msg is NULL or up_msg ='' or up_msg NOT LIKE '%成功%')
+  order by org_id asc,tjrq asc ;
+  </select>
+  <!--依据条码号获取基本信息-->
+  <select id="getGrjbxxByTmh" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from common_examnationgrjbxx
+    where tmh = #{tmh,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from common_examnationgrjbxx
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from common_examnationgrjbxx
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.GrjbxxBean">
+    insert into common_examnationgrjbxx (id, card, tmh, 
+      type, index_no, formerly_id, 
+      tjrq, year, fhdyy, 
+      name, gengder, age, 
+      zjlx, sfz, csrq, 
+      hjzt, lxdh, brdh, lxrxm, 
+      czlx, minz, xuex, RH, 
+      wenhcd, gzdw, zhiye, 
+      ldqd, hyzk, yyzffs, 
+      czjm_ybkh, jmjbyl_ybkh, pkjz_ybkh, 
+      ywgms, ywgms_detail, shen, 
+      shi, qu, zhen, cun, 
+      address, hj_address, ylbxh, 
+      xnhh, jws_xbs, jws, 
+      shous, shouss, wais, 
+      waiss, shuxue, shuxues, 
+      jzs, jzs_detail, baols, 
+      baols_detail, yichuanbs, yichuanbs_detail, 
+      cjqk, cjqk_detail, ycqk, 
+      yc_yc, yc_cc, cfpfss, 
+      ranllx, yinshui, cesuo, 
+      qinchul, dcsj, cjys, 
+      org_id, org_name, hzxm, 
+      hz_sfz, jtrks, jtjg, 
+      jzqk, up_msg)
+    values (#{id,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, #{tmh,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{indexNo,jdbcType=INTEGER}, #{formerlyId,jdbcType=VARCHAR}, 
+      #{tjrq,jdbcType=TIMESTAMP}, #{year,jdbcType=INTEGER}, #{fhdyy,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{gengder,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, 
+      #{zjlx,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}, #{csrq,jdbcType=TIMESTAMP}, 
+      #{hjzt,jdbcType=VARCHAR}, #{lxdh,jdbcType=VARCHAR}, #{brdh,jdbcType=VARCHAR}, #{lxrxm,jdbcType=VARCHAR}, 
+      #{czlx,jdbcType=VARCHAR}, #{minz,jdbcType=VARCHAR}, #{xuex,jdbcType=VARCHAR}, #{rh,jdbcType=VARCHAR}, 
+      #{wenhcd,jdbcType=VARCHAR}, #{gzdw,jdbcType=VARCHAR}, #{zhiye,jdbcType=VARCHAR}, 
+      #{ldqd,jdbcType=VARCHAR}, #{hyzk,jdbcType=VARCHAR}, #{yyzffs,jdbcType=VARCHAR}, 
+      #{czjmYbkh,jdbcType=VARCHAR}, #{jmjbylYbkh,jdbcType=VARCHAR}, #{pkjzYbkh,jdbcType=VARCHAR}, 
+      #{ywgms,jdbcType=VARCHAR}, #{ywgmsDetail,jdbcType=VARCHAR}, #{shen,jdbcType=VARCHAR}, 
+      #{shi,jdbcType=VARCHAR}, #{qu,jdbcType=VARCHAR}, #{zhen,jdbcType=VARCHAR}, #{cun,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{hjAddress,jdbcType=VARCHAR}, #{ylbxh,jdbcType=VARCHAR}, 
+      #{xnhh,jdbcType=VARCHAR}, #{jwsXbs,jdbcType=VARCHAR}, #{jws,jdbcType=VARCHAR}, 
+      #{shous,jdbcType=VARCHAR}, #{shouss,jdbcType=VARCHAR}, #{wais,jdbcType=VARCHAR}, 
+      #{waiss,jdbcType=VARCHAR}, #{shuxue,jdbcType=VARCHAR}, #{shuxues,jdbcType=VARCHAR}, 
+      #{jzs,jdbcType=VARCHAR}, #{jzsDetail,jdbcType=VARCHAR}, #{baols,jdbcType=VARCHAR}, 
+      #{baolsDetail,jdbcType=VARCHAR}, #{yichuanbs,jdbcType=VARCHAR}, #{yichuanbsDetail,jdbcType=VARCHAR}, 
+      #{cjqk,jdbcType=VARCHAR}, #{cjqkDetail,jdbcType=VARCHAR}, #{ycqk,jdbcType=VARCHAR}, 
+      #{ycYc,jdbcType=INTEGER}, #{ycCc,jdbcType=INTEGER}, #{cfpfss,jdbcType=VARCHAR}, 
+      #{ranllx,jdbcType=VARCHAR}, #{yinshui,jdbcType=VARCHAR}, #{cesuo,jdbcType=VARCHAR}, 
+      #{qinchul,jdbcType=VARCHAR}, #{dcsj,jdbcType=TIMESTAMP}, #{cjys,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{hzxm,jdbcType=VARCHAR}, 
+      #{hzSfz,jdbcType=VARCHAR}, #{jtrks,jdbcType=VARCHAR}, #{jtjg,jdbcType=INTEGER}, 
+      #{jzqk,jdbcType=VARCHAR}, #{upMsg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.GrjbxxBean">
+    insert into common_examnationgrjbxx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="card != null">
+        card,
+      </if>
+      <if test="tmh != null">
+        tmh,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="indexNo != null">
+        index_no,
+      </if>
+      <if test="formerlyId != null">
+        formerly_id,
+      </if>
+      <if test="tjrq != null">
+        tjrq,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="fhdyy != null">
+        fhdyy,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gengder != null">
+        gengder,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="zjlx != null">
+        zjlx,
+      </if>
+      <if test="sfz != null">
+        sfz,
+      </if>
+      <if test="csrq != null">
+        csrq,
+      </if>
+      <if test="hjzt != null">
+        hjzt,
+      </if>
+      <if test="lxdh != null">
+        lxdh,
+      </if>
+      <if test="brdh != null">
+        brdh,
+      </if>
+      <if test="lxrxm != null">
+        lxrxm,
+      </if>
+      <if test="czlx != null">
+        czlx,
+      </if>
+      <if test="minz != null">
+        minz,
+      </if>
+      <if test="xuex != null">
+        xuex,
+      </if>
+      <if test="rh != null">
+        RH,
+      </if>
+      <if test="wenhcd != null">
+        wenhcd,
+      </if>
+      <if test="gzdw != null">
+        gzdw,
+      </if>
+      <if test="zhiye != null">
+        zhiye,
+      </if>
+      <if test="ldqd != null">
+        ldqd,
+      </if>
+      <if test="hyzk != null">
+        hyzk,
+      </if>
+      <if test="yyzffs != null">
+        yyzffs,
+      </if>
+      <if test="czjmYbkh != null">
+        czjm_ybkh,
+      </if>
+      <if test="jmjbylYbkh != null">
+        jmjbyl_ybkh,
+      </if>
+      <if test="pkjzYbkh != null">
+        pkjz_ybkh,
+      </if>
+      <if test="ywgms != null">
+        ywgms,
+      </if>
+      <if test="ywgmsDetail != null">
+        ywgms_detail,
+      </if>
+      <if test="shen != null">
+        shen,
+      </if>
+      <if test="shi != null">
+        shi,
+      </if>
+      <if test="qu != null">
+        qu,
+      </if>
+      <if test="zhen != null">
+        zhen,
+      </if>
+      <if test="cun != null">
+        cun,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="hjAddress != null">
+        hj_address,
+      </if>
+      <if test="ylbxh != null">
+        ylbxh,
+      </if>
+      <if test="xnhh != null">
+        xnhh,
+      </if>
+      <if test="jwsXbs != null">
+        jws_xbs,
+      </if>
+      <if test="jws != null">
+        jws,
+      </if>
+      <if test="shous != null">
+        shous,
+      </if>
+      <if test="shouss != null">
+        shouss,
+      </if>
+      <if test="wais != null">
+        wais,
+      </if>
+      <if test="waiss != null">
+        waiss,
+      </if>
+      <if test="shuxue != null">
+        shuxue,
+      </if>
+      <if test="shuxues != null">
+        shuxues,
+      </if>
+      <if test="jzs != null">
+        jzs,
+      </if>
+      <if test="jzsDetail != null">
+        jzs_detail,
+      </if>
+      <if test="baols != null">
+        baols,
+      </if>
+      <if test="baolsDetail != null">
+        baols_detail,
+      </if>
+      <if test="yichuanbs != null">
+        yichuanbs,
+      </if>
+      <if test="yichuanbsDetail != null">
+        yichuanbs_detail,
+      </if>
+      <if test="cjqk != null">
+        cjqk,
+      </if>
+      <if test="cjqkDetail != null">
+        cjqk_detail,
+      </if>
+      <if test="ycqk != null">
+        ycqk,
+      </if>
+      <if test="ycYc != null">
+        yc_yc,
+      </if>
+      <if test="ycCc != null">
+        yc_cc,
+      </if>
+      <if test="cfpfss != null">
+        cfpfss,
+      </if>
+      <if test="ranllx != null">
+        ranllx,
+      </if>
+      <if test="yinshui != null">
+        yinshui,
+      </if>
+      <if test="cesuo != null">
+        cesuo,
+      </if>
+      <if test="qinchul != null">
+        qinchul,
+      </if>
+      <if test="dcsj != null">
+        dcsj,
+      </if>
+      <if test="cjys != null">
+        cjys,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="hzxm != null">
+        hzxm,
+      </if>
+      <if test="hzSfz != null">
+        hz_sfz,
+      </if>
+      <if test="jtrks != null">
+        jtrks,
+      </if>
+      <if test="jtjg != null">
+        jtjg,
+      </if>
+      <if test="jzqk != null">
+        jzqk,
+      </if>
+      <if test="upMsg != null">
+        up_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null">
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="tmh != null">
+        #{tmh,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="indexNo != null">
+        #{indexNo,jdbcType=INTEGER},
+      </if>
+      <if test="formerlyId != null">
+        #{formerlyId,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null">
+        #{tjrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="fhdyy != null">
+        #{fhdyy,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gengder != null">
+        #{gengder,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="zjlx != null">
+        #{zjlx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null">
+        #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null">
+        #{csrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hjzt != null">
+        #{hjzt,jdbcType=VARCHAR},
+      </if>
+      <if test="lxdh != null">
+        #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="brdh != null">
+        #{brdh,jdbcType=VARCHAR},
+      </if>
+      <if test="lxrxm != null">
+        #{lxrxm,jdbcType=VARCHAR},
+      </if>
+      <if test="czlx != null">
+        #{czlx,jdbcType=VARCHAR},
+      </if>
+      <if test="minz != null">
+        #{minz,jdbcType=VARCHAR},
+      </if>
+      <if test="xuex != null">
+        #{xuex,jdbcType=VARCHAR},
+      </if>
+      <if test="rh != null">
+        #{rh,jdbcType=VARCHAR},
+      </if>
+      <if test="wenhcd != null">
+        #{wenhcd,jdbcType=VARCHAR},
+      </if>
+      <if test="gzdw != null">
+        #{gzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiye != null">
+        #{zhiye,jdbcType=VARCHAR},
+      </if>
+      <if test="ldqd != null">
+        #{ldqd,jdbcType=VARCHAR},
+      </if>
+      <if test="hyzk != null">
+        #{hyzk,jdbcType=VARCHAR},
+      </if>
+      <if test="yyzffs != null">
+        #{yyzffs,jdbcType=VARCHAR},
+      </if>
+      <if test="czjmYbkh != null">
+        #{czjmYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="jmjbylYbkh != null">
+        #{jmjbylYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="pkjzYbkh != null">
+        #{pkjzYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="ywgms != null">
+        #{ywgms,jdbcType=VARCHAR},
+      </if>
+      <if test="ywgmsDetail != null">
+        #{ywgmsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="shen != null">
+        #{shen,jdbcType=VARCHAR},
+      </if>
+      <if test="shi != null">
+        #{shi,jdbcType=VARCHAR},
+      </if>
+      <if test="qu != null">
+        #{qu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhen != null">
+        #{zhen,jdbcType=VARCHAR},
+      </if>
+      <if test="cun != null">
+        #{cun,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hjAddress != null">
+        #{hjAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbxh != null">
+        #{ylbxh,jdbcType=VARCHAR},
+      </if>
+      <if test="xnhh != null">
+        #{xnhh,jdbcType=VARCHAR},
+      </if>
+      <if test="jwsXbs != null">
+        #{jwsXbs,jdbcType=VARCHAR},
+      </if>
+      <if test="jws != null">
+        #{jws,jdbcType=VARCHAR},
+      </if>
+      <if test="shous != null">
+        #{shous,jdbcType=VARCHAR},
+      </if>
+      <if test="shouss != null">
+        #{shouss,jdbcType=VARCHAR},
+      </if>
+      <if test="wais != null">
+        #{wais,jdbcType=VARCHAR},
+      </if>
+      <if test="waiss != null">
+        #{waiss,jdbcType=VARCHAR},
+      </if>
+      <if test="shuxue != null">
+        #{shuxue,jdbcType=VARCHAR},
+      </if>
+      <if test="shuxues != null">
+        #{shuxues,jdbcType=VARCHAR},
+      </if>
+      <if test="jzs != null">
+        #{jzs,jdbcType=VARCHAR},
+      </if>
+      <if test="jzsDetail != null">
+        #{jzsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="baols != null">
+        #{baols,jdbcType=VARCHAR},
+      </if>
+      <if test="baolsDetail != null">
+        #{baolsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="yichuanbs != null">
+        #{yichuanbs,jdbcType=VARCHAR},
+      </if>
+      <if test="yichuanbsDetail != null">
+        #{yichuanbsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="cjqk != null">
+        #{cjqk,jdbcType=VARCHAR},
+      </if>
+      <if test="cjqkDetail != null">
+        #{cjqkDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="ycqk != null">
+        #{ycqk,jdbcType=VARCHAR},
+      </if>
+      <if test="ycYc != null">
+        #{ycYc,jdbcType=INTEGER},
+      </if>
+      <if test="ycCc != null">
+        #{ycCc,jdbcType=INTEGER},
+      </if>
+      <if test="cfpfss != null">
+        #{cfpfss,jdbcType=VARCHAR},
+      </if>
+      <if test="ranllx != null">
+        #{ranllx,jdbcType=VARCHAR},
+      </if>
+      <if test="yinshui != null">
+        #{yinshui,jdbcType=VARCHAR},
+      </if>
+      <if test="cesuo != null">
+        #{cesuo,jdbcType=VARCHAR},
+      </if>
+      <if test="qinchul != null">
+        #{qinchul,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsj != null">
+        #{dcsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cjys != null">
+        #{cjys,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="hzxm != null">
+        #{hzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="hzSfz != null">
+        #{hzSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="jtrks != null">
+        #{jtrks,jdbcType=VARCHAR},
+      </if>
+      <if test="jtjg != null">
+        #{jtjg,jdbcType=INTEGER},
+      </if>
+      <if test="jzqk != null">
+        #{jzqk,jdbcType=VARCHAR},
+      </if>
+      <if test="upMsg != null">
+        #{upMsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.GrjbxxBean">
+    update common_examnationgrjbxx
+    <set>
+      <if test="card != null">
+        card = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="tmh != null">
+        tmh = #{tmh,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="indexNo != null">
+        index_no = #{indexNo,jdbcType=INTEGER},
+      </if>
+      <if test="formerlyId != null">
+        formerly_id = #{formerlyId,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null">
+        tjrq = #{tjrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="fhdyy != null">
+        fhdyy = #{fhdyy,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gengder != null">
+        gengder = #{gengder,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="zjlx != null">
+        zjlx = #{zjlx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null">
+        sfz = #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null">
+        csrq = #{csrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hjzt != null">
+        hjzt = #{hjzt,jdbcType=VARCHAR},
+      </if>
+      <if test="lxdh != null">
+        lxdh = #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="brdh != null">
+        brdh = #{brdh,jdbcType=VARCHAR},
+      </if>
+      <if test="lxrxm != null">
+        lxrxm = #{lxrxm,jdbcType=VARCHAR},
+      </if>
+      <if test="czlx != null">
+        czlx = #{czlx,jdbcType=VARCHAR},
+      </if>
+      <if test="minz != null">
+        minz = #{minz,jdbcType=VARCHAR},
+      </if>
+      <if test="xuex != null">
+        xuex = #{xuex,jdbcType=VARCHAR},
+      </if>
+      <if test="rh != null">
+        RH = #{rh,jdbcType=VARCHAR},
+      </if>
+      <if test="wenhcd != null">
+        wenhcd = #{wenhcd,jdbcType=VARCHAR},
+      </if>
+      <if test="gzdw != null">
+        gzdw = #{gzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiye != null">
+        zhiye = #{zhiye,jdbcType=VARCHAR},
+      </if>
+      <if test="ldqd != null">
+        ldqd = #{ldqd,jdbcType=VARCHAR},
+      </if>
+      <if test="hyzk != null">
+        hyzk = #{hyzk,jdbcType=VARCHAR},
+      </if>
+      <if test="yyzffs != null">
+        yyzffs = #{yyzffs,jdbcType=VARCHAR},
+      </if>
+      <if test="czjmYbkh != null">
+        czjm_ybkh = #{czjmYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="jmjbylYbkh != null">
+        jmjbyl_ybkh = #{jmjbylYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="pkjzYbkh != null">
+        pkjz_ybkh = #{pkjzYbkh,jdbcType=VARCHAR},
+      </if>
+      <if test="ywgms != null">
+        ywgms = #{ywgms,jdbcType=VARCHAR},
+      </if>
+      <if test="ywgmsDetail != null">
+        ywgms_detail = #{ywgmsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="shen != null">
+        shen = #{shen,jdbcType=VARCHAR},
+      </if>
+      <if test="shi != null">
+        shi = #{shi,jdbcType=VARCHAR},
+      </if>
+      <if test="qu != null">
+        qu = #{qu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhen != null">
+        zhen = #{zhen,jdbcType=VARCHAR},
+      </if>
+      <if test="cun != null">
+        cun = #{cun,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hjAddress != null">
+        hj_address = #{hjAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbxh != null">
+        ylbxh = #{ylbxh,jdbcType=VARCHAR},
+      </if>
+      <if test="xnhh != null">
+        xnhh = #{xnhh,jdbcType=VARCHAR},
+      </if>
+      <if test="jwsXbs != null">
+        jws_xbs = #{jwsXbs,jdbcType=VARCHAR},
+      </if>
+      <if test="jws != null">
+        jws = #{jws,jdbcType=VARCHAR},
+      </if>
+      <if test="shous != null">
+        shous = #{shous,jdbcType=VARCHAR},
+      </if>
+      <if test="shouss != null">
+        shouss = #{shouss,jdbcType=VARCHAR},
+      </if>
+      <if test="wais != null">
+        wais = #{wais,jdbcType=VARCHAR},
+      </if>
+      <if test="waiss != null">
+        waiss = #{waiss,jdbcType=VARCHAR},
+      </if>
+      <if test="shuxue != null">
+        shuxue = #{shuxue,jdbcType=VARCHAR},
+      </if>
+      <if test="shuxues != null">
+        shuxues = #{shuxues,jdbcType=VARCHAR},
+      </if>
+      <if test="jzs != null">
+        jzs = #{jzs,jdbcType=VARCHAR},
+      </if>
+      <if test="jzsDetail != null">
+        jzs_detail = #{jzsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="baols != null">
+        baols = #{baols,jdbcType=VARCHAR},
+      </if>
+      <if test="baolsDetail != null">
+        baols_detail = #{baolsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="yichuanbs != null">
+        yichuanbs = #{yichuanbs,jdbcType=VARCHAR},
+      </if>
+      <if test="yichuanbsDetail != null">
+        yichuanbs_detail = #{yichuanbsDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="cjqk != null">
+        cjqk = #{cjqk,jdbcType=VARCHAR},
+      </if>
+      <if test="cjqkDetail != null">
+        cjqk_detail = #{cjqkDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="ycqk != null">
+        ycqk = #{ycqk,jdbcType=VARCHAR},
+      </if>
+      <if test="ycYc != null">
+        yc_yc = #{ycYc,jdbcType=INTEGER},
+      </if>
+      <if test="ycCc != null">
+        yc_cc = #{ycCc,jdbcType=INTEGER},
+      </if>
+      <if test="cfpfss != null">
+        cfpfss = #{cfpfss,jdbcType=VARCHAR},
+      </if>
+      <if test="ranllx != null">
+        ranllx = #{ranllx,jdbcType=VARCHAR},
+      </if>
+      <if test="yinshui != null">
+        yinshui = #{yinshui,jdbcType=VARCHAR},
+      </if>
+      <if test="cesuo != null">
+        cesuo = #{cesuo,jdbcType=VARCHAR},
+      </if>
+      <if test="qinchul != null">
+        qinchul = #{qinchul,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsj != null">
+        dcsj = #{dcsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cjys != null">
+        cjys = #{cjys,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="hzxm != null">
+        hzxm = #{hzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="hzSfz != null">
+        hz_sfz = #{hzSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="jtrks != null">
+        jtrks = #{jtrks,jdbcType=VARCHAR},
+      </if>
+      <if test="jtjg != null">
+        jtjg = #{jtjg,jdbcType=INTEGER},
+      </if>
+      <if test="jzqk != null">
+        jzqk = #{jzqk,jdbcType=VARCHAR},
+      </if>
+      <if test="upMsg != null">
+        up_msg = #{upMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="daCreateTime != null">
+        da_create_time = #{daCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.GrjbxxBean">
+    update common_examnationgrjbxx
+    set card = #{card,jdbcType=VARCHAR},
+      tmh = #{tmh,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      index_no = #{indexNo,jdbcType=INTEGER},
+      formerly_id = #{formerlyId,jdbcType=VARCHAR},
+      tjrq = #{tjrq,jdbcType=TIMESTAMP},
+      year = #{year,jdbcType=INTEGER},
+      fhdyy = #{fhdyy,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gengder = #{gengder,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      zjlx = #{zjlx,jdbcType=VARCHAR},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      csrq = #{csrq,jdbcType=TIMESTAMP},
+      hjzt = #{hjzt,jdbcType=VARCHAR},
+      lxdh = #{lxdh,jdbcType=VARCHAR},
+      brdh = #{brdh,jdbcType=VARCHAR},
+      lxrxm = #{lxrxm,jdbcType=VARCHAR},
+      czlx = #{czlx,jdbcType=VARCHAR},
+      minz = #{minz,jdbcType=VARCHAR},
+      xuex = #{xuex,jdbcType=VARCHAR},
+      RH = #{rh,jdbcType=VARCHAR},
+      wenhcd = #{wenhcd,jdbcType=VARCHAR},
+      gzdw = #{gzdw,jdbcType=VARCHAR},
+      zhiye = #{zhiye,jdbcType=VARCHAR},
+      ldqd = #{ldqd,jdbcType=VARCHAR},
+      hyzk = #{hyzk,jdbcType=VARCHAR},
+      yyzffs = #{yyzffs,jdbcType=VARCHAR},
+      czjm_ybkh = #{czjmYbkh,jdbcType=VARCHAR},
+      jmjbyl_ybkh = #{jmjbylYbkh,jdbcType=VARCHAR},
+      pkjz_ybkh = #{pkjzYbkh,jdbcType=VARCHAR},
+      ywgms = #{ywgms,jdbcType=VARCHAR},
+      ywgms_detail = #{ywgmsDetail,jdbcType=VARCHAR},
+      shen = #{shen,jdbcType=VARCHAR},
+      shi = #{shi,jdbcType=VARCHAR},
+      qu = #{qu,jdbcType=VARCHAR},
+      zhen = #{zhen,jdbcType=VARCHAR},
+      cun = #{cun,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      hj_address = #{hjAddress,jdbcType=VARCHAR},
+      ylbxh = #{ylbxh,jdbcType=VARCHAR},
+      xnhh = #{xnhh,jdbcType=VARCHAR},
+      jws_xbs = #{jwsXbs,jdbcType=VARCHAR},
+      jws = #{jws,jdbcType=VARCHAR},
+      shous = #{shous,jdbcType=VARCHAR},
+      shouss = #{shouss,jdbcType=VARCHAR},
+      wais = #{wais,jdbcType=VARCHAR},
+      waiss = #{waiss,jdbcType=VARCHAR},
+      shuxue = #{shuxue,jdbcType=VARCHAR},
+      shuxues = #{shuxues,jdbcType=VARCHAR},
+      jzs = #{jzs,jdbcType=VARCHAR},
+      jzs_detail = #{jzsDetail,jdbcType=VARCHAR},
+      baols = #{baols,jdbcType=VARCHAR},
+      baols_detail = #{baolsDetail,jdbcType=VARCHAR},
+      yichuanbs = #{yichuanbs,jdbcType=VARCHAR},
+      yichuanbs_detail = #{yichuanbsDetail,jdbcType=VARCHAR},
+      cjqk = #{cjqk,jdbcType=VARCHAR},
+      cjqk_detail = #{cjqkDetail,jdbcType=VARCHAR},
+      ycqk = #{ycqk,jdbcType=VARCHAR},
+      yc_yc = #{ycYc,jdbcType=INTEGER},
+      yc_cc = #{ycCc,jdbcType=INTEGER},
+      cfpfss = #{cfpfss,jdbcType=VARCHAR},
+      ranllx = #{ranllx,jdbcType=VARCHAR},
+      yinshui = #{yinshui,jdbcType=VARCHAR},
+      cesuo = #{cesuo,jdbcType=VARCHAR},
+      qinchul = #{qinchul,jdbcType=VARCHAR},
+      dcsj = #{dcsj,jdbcType=TIMESTAMP},
+      cjys = #{cjys,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      hzxm = #{hzxm,jdbcType=VARCHAR},
+      hz_sfz = #{hzSfz,jdbcType=VARCHAR},
+      jtrks = #{jtrks,jdbcType=VARCHAR},
+      jtjg = #{jtjg,jdbcType=INTEGER},
+      jzqk = #{jzqk,jdbcType=VARCHAR},
+      up_msg = #{upMsg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

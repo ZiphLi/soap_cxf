@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 加密解密 -->
+    <bean id="SecurityDecode"
+          class="com.ky.core.security.PropertyPlaceholderConfigurerDecode">
+        <property name="locations">
+            <list>
+                <!--MYSQL数据库配置文件-->
+                <value>classpath:common/jdbc.properties</value>
+                <!--公共参数配置-->
+                <value>classpath:common/common.properties</value>
+            </list>
+        </property>
+        <!-- security为false，则对属性文件的属性值不进行解密处理，为true，则进行解密 -->
+        <property name="secutiry">
+            <value>true</value>
+        </property>
+        <!-- -->
+        <property name="key">
+            <value>_@WDYL#ACB#123@</value>
+        </property>
+        <!-- 是否加密字段结尾分解字符 有;;号代表不加密 -->
+        <property name="sercurityFlag">
+            <value>;;</value>
+        </property>
+    </bean>
+</beans>

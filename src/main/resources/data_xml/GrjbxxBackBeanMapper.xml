@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.GrjbxxBackDao" >
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.GrjbxxBackBean" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="tmh" property="tmh" jdbcType="VARCHAR" />
+    <result column="sfz" property="sfz" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="tjrq" property="tjrq" jdbcType="TIMESTAMP" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="back_time" property="backTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ky.common.bean.GrjbxxBackBean" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tmh, sfz, xm, tjrq, org_id, org_name, back_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from com_grjbxx_back
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from com_grjbxx_back
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.GrjbxxBackBean" >
+    insert into com_grjbxx_back (id, tmh, sfz, 
+      xm, tjrq, org_id, 
+      org_name, back_time, content
+      )
+    values (#{id,jdbcType=VARCHAR}, #{tmh,jdbcType=VARCHAR}, #{sfz,jdbcType=VARCHAR}, 
+      #{xm,jdbcType=VARCHAR}, #{tjrq,jdbcType=TIMESTAMP}, #{orgId,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{backTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.GrjbxxBackBean" >
+    insert into com_grjbxx_back
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tmh != null" >
+        tmh,
+      </if>
+      <if test="sfz != null" >
+        sfz,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="tjrq != null" >
+        tjrq,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="backTime != null" >
+        back_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tmh != null" >
+        #{tmh,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null" >
+        #{tjrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="backTime != null" >
+        #{backTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.GrjbxxBackBean" >
+    update com_grjbxx_back
+    <set >
+      <if test="tmh != null" >
+        tmh = #{tmh,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz != null" >
+        sfz = #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null" >
+        tjrq = #{tjrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="backTime != null" >
+        back_time = #{backTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ky.common.bean.GrjbxxBackBean" >
+    update com_grjbxx_back
+    set tmh = #{tmh,jdbcType=VARCHAR},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      tjrq = #{tjrq,jdbcType=TIMESTAMP},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      back_time = #{backTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.GrjbxxBackBean" >
+    update com_grjbxx_back
+    set tmh = #{tmh,jdbcType=VARCHAR},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      tjrq = #{tjrq,jdbcType=TIMESTAMP},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      back_time = #{backTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
