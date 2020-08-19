@@ -13,7 +13,7 @@ import java.util.Map;
 public class CxfClient {
 
     /**
-     * 同步高血压数据
+     * 同步高血压数据11111
      *
      * @param IDMap
      */
