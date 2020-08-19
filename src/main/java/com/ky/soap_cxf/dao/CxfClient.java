@@ -14,7 +14,6 @@ public class CxfClient {
 
     /**
      * 同步高血压数据1
-     * 1111
      *
      * @param IDMap
      */
@@ -22,6 +21,7 @@ public class CxfClient {
         //48-2 通过用户名密码获取所在机构信息 getRegionCode
         String url = IDMap.get("url").toString();
         String method = IDMap.get("method").toString();
+
         String TradeCode = "48-2";
         String InputParameter = "{\"UserName\":\"" + IDMap.get("username").toString() + "\",\"Password\":\"" + IDMap.get("password").toString() + "\"}";
         Object[] parameters = new Object[]{TradeCode, InputParameter};
