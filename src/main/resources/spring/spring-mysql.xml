@@ -44,7 +44,7 @@
     </bean>
     <!-- 能够直接将接口转换成Dao操作类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.wd.upload.platform"/>
+        <property name="basePackage" value="com.ky"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
     <!--&lt;!&ndash; 开启事务注解驱动 &ndash;&gt;-->

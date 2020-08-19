@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
     <!--指定SpringMVC扫描路径-->
-    <context:component-scan base-package="springfox,com.ky.soap_cxf" />
+    <context:component-scan base-package="springfox,com.ky" />
     <context:property-placeholder location="classpath:common/common.properties" />
     <!-- 启动Srping及SpringMVC注解 -->
     <mvc:annotation-driven>

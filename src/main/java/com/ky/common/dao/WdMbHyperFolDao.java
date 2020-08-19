@@ -40,6 +40,7 @@ public interface WdMbHyperFolDao {
      * @return
      */
     List<WdMbHyperFol> getAllHyperPeoByOrgId(@Param("orgId") String orgId);
+
     /**
      * 依据机构号获取随访队列
      * @param orgId

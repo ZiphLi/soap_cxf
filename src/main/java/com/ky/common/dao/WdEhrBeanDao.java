@@ -29,6 +29,13 @@ public interface WdEhrBeanDao {
 
     WdEhrBean selectByPrimaryKey(String id);
 
+    /**
+     * 根据身份证查(可能重复)
+     * @param sfz
+     * @return
+     */
+    List<WdEhrBean> selectBySfz(String sfz);
+
     int updateByPrimaryKeySelective(WdEhrBean record);
 
     int updateByPrimaryKey(WdEhrBean record);
