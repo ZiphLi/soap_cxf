@@ -32,17 +32,17 @@ public class CxfClient {
         for (int i = 0; i < RegionCodeList.length(); i++) {
             String RegionCode = RegionCodeList.getString(i);
             //根据机构号获取个人ID
-            getPersonID(IDMap, RegionCode);
+            getPersonDa(IDMap, RegionCode);
         }
     }
 
 
     /**
-     * 55-11 根据机构号获取个人ID
+     * 55-11 根据机构号获取个人ID (个人档案)
      *
      * @param IDMap
      */
-    public static void getPersonID(Map<String, Object> IDMap, String RegionCode) {
+    public static void getPersonDa(Map<String, Object> IDMap, String RegionCode) {
         int total = 1;
         for (int i = 0; i < total; i++) {
             String url = IDMap.get("url").toString();
@@ -57,8 +57,14 @@ public class CxfClient {
             Object[] parameters = new Object[]{TradeCode, InputParameter};
             String resultStr = InvokeRemoteDao.invokeRemoteMethod(url, method, parameters)[0].toString();
             JSONObject resultJson = new JSONObject(resultStr);
-            JSONObject Msg = resultJson.getJSONObject("Msg");
-            String sfz = Msg.getString("IDCARD");
+            JSONArray Msg = resultJson.getJSONArray("Msg");
+            //获取每个人的档案
+            for (int j = 0; j < 100; j++) {
+                JSONObject wdEhr = Msg.getJSONObject(j);
+                System.out.println(wdEhr);
+            }
+            //total
+            total = resultJson.getInt("Total");
         }
     }
 }

@@ -6,13 +6,14 @@ package com.ky.soap_cxf;
 public class test {
 
     public static void main(String[] args) {
-        int total = 1;
-        for (int i = 0; i < total; i++) {
-            System.out.println("q");
-            if (false) {
-                total = 5;
-            }
-        }
+//        int total = 1;
+//        for (int i = 0; i < total; i++) {
+//            System.out.println("q");
+//            if (false) {
+//                total = 5;
+//            }
+//
+
     }
 
 }
