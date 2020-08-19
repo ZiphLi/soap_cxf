@@ -2,6 +2,7 @@ package com.ky.soap_cxf.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.ky.common.bean.WdEhrBean;
+import com.ky.common.bean.WdMbDiabeFol;
 import com.ky.common.bean.WdMbHyperFol;
 import com.ky.common.dao.WdEhrBeanDao;
 import com.ky.common.dao.WdMbDiabeFolDao;
@@ -79,8 +80,8 @@ public class UpAndDownMbService {
                         updateWdEhr(sfz, wdEhr);
                         //获取人员全部高血压随访记录
                         JSONArray GxyMsg = CxfClient.getGxyFollow(IDMap, personID);
-                        //遍历人员全部慢病随访记录并添加或更新
-                        uploadMb(GxyMsg, sfz);
+                        //遍历人员全部高血压随访记录并添加或更新
+                        uploadGxy(GxyMsg, sfz);
                     }
                     //糖尿病 TT
                     if (wdEhr.get("TT").toString().contains("糖")) {
@@ -88,8 +89,8 @@ public class UpAndDownMbService {
                         updateWdEhr(sfz, wdEhr);
                         //获取糖尿病随访记录
                         JSONArray TnbMsg = CxfClient.getTnbFollow(IDMap, personID);
-                        //遍历人员全部慢病随访记录并添加或更新
-                        uploadMb(TnbMsg, sfz);
+                        //遍历人员全部糖尿病随访记录并添加或更新
+                        uploadTnb(TnbMsg, sfz);
                     }
                 }
                 index++;
@@ -98,12 +99,12 @@ public class UpAndDownMbService {
     }
 
     /**
-     * 遍历人员全部慢病随访记录并添加或更新
+     * 遍历人员全部高血压随访记录并添加或更新
      *
      * @param mbMsg
      * @param sfz
      */
-    private void uploadMb(JSONArray mbMsg, String sfz) {
+    private void uploadGxy(JSONArray mbMsg, String sfz) {
         //遍历高血压随访记录
         for (int gxyIndex = 0; gxyIndex < mbMsg.length(); gxyIndex++) {
             JSONObject GxyFol = mbMsg.getJSONObject(gxyIndex);
@@ -116,6 +117,33 @@ public class UpAndDownMbService {
                         //无操作或需要更新随访
                     } else {
                         //需要添加随访...
+                        System.out.println("需要添加高血压随访--" + sfrq + "--" + sfz);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 遍历人员全部糖尿病随访记录并添加或更新
+     *
+     * @param mbMsg
+     * @param sfz
+     */
+    private void uploadTnb(JSONArray mbMsg, String sfz) {
+        //遍历高血压随访记录
+        for (int gxyIndex = 0; gxyIndex < mbMsg.length(); gxyIndex++) {
+            JSONObject GxyFol = mbMsg.getJSONObject(gxyIndex);
+            String folTime = GxyFol.get("FollowUpDateStr").toString();
+            if (folTime.length() > 9) {
+                List<WdMbDiabeFol> wdMbDiabeFolList = wdMbDiabeFolDao.getDiabeListBySfzAndOrgId("", sfz);
+                for (WdMbDiabeFol wdMbDiabeFol : wdMbDiabeFolList) {
+                    String sfrq = DateUtil.getDateString(wdMbDiabeFol.getFollowUpDate());
+                    if (sfrq.equals(folTime)) {
+                        //无操作或需要更新随访
+                    } else {
+                        //需要添加随访...
+                        System.out.println("需要添加糖尿病随访--" + sfrq + "--" + sfz);
                     }
                 }
             }
