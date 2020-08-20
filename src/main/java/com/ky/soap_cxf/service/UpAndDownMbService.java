@@ -8,16 +8,15 @@ import com.ky.common.bean.OrgBean;
 import com.ky.common.dao.*;
 import com.ky.core.util.DateUtil;
 import com.ky.soap_cxf.dao.CxfClient;
-import com.ky.soap_cxf.dao.WdEhrDao;
-import com.mongodb.util.JSON;
-import org.apache.poi.util.IdentifierManager;
+import com.ky.soap_cxf.dao.KyEhrDao;
+import com.ky.soap_cxf.dao.KyMbDao;
+import com.ky.soap_cxf.help.EhrHelp;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.UUID;
 @Service
 public class UpAndDownMbService {
     @Autowired
-    private EhrBeanDao EhrBeanDao;
+    private EhrBeanDao ehrBeanDao;
     @Autowired
     private OrgBeanDao orgBeanDao;
     @Autowired
@@ -61,12 +60,16 @@ public class UpAndDownMbService {
                 IDMap.put("password", orgBean.getZlPasswd());
                 IDMap.put("url", orgBean.getZlServerAddress());
                 IDMap.put("productCode", orgBean.getYyCode());
+                IDMap.put("orgId", orgBean.getId());
+                IDMap.put("orgName", orgBean.getName());
                 upAndDownMb(IDMap);
             }
         }
     }
 
     /**
+     * 同步慢病档案及随访数据 业务层
+     *
      * @param IDMap
      */
     private void upAndDownMb(Map<String, Object> IDMap) {
@@ -89,14 +92,14 @@ public class UpAndDownMbService {
                     String xm = wdEhr.get("NAME").toString();
                     String personID = wdEhr.get("ID").toString();
                     //上传档案到com_ehr
-                    String ehrId = updateWdEhr(wdEhr);
+                    String ehrId = updateWdEhr(wdEhr, IDMap);
                     //高血压 TG
                     if (wdEhr.get("TG").toString().contains("高")) {
                         System.err.println(sfz + "--" + xm + "是高血压");
                         //获取人员全部高血压随访记录
                         JSONArray GxyMsg = CxfClient.getGxyFollow(IDMap, personID);
                         //遍历人员全部高血压随访记录并添加或更新
-                        uploadGxy(GxyMsg, ehrId);
+                        uploadGxy(IDMap, GxyMsg, ehrId);
                     }
                     //糖尿病 TT
                     if (wdEhr.get("TT").toString().contains("糖")) {
@@ -104,7 +107,7 @@ public class UpAndDownMbService {
                         //获取糖尿病随访记录
                         JSONArray TnbMsg = CxfClient.getTnbFollow(IDMap, personID);
                         //遍历人员全部糖尿病随访记录并添加或更新
-                        uploadTnb(TnbMsg, ehrId);
+                        uploadTnb(IDMap, TnbMsg, ehrId);
                     }
                 }
                 index++;
@@ -113,26 +116,58 @@ public class UpAndDownMbService {
     }
 
     /**
+     * 更新或添加到wdEhr
+     */
+    private String updateWdEhr(JSONObject wdEhr, Map<String, Object> IDMap) {
+        //sfz
+        String sfz = wdEhr.get("CARD_ID").toString();
+        //查wd_Ehr 是否有该sfz 没有则添加(可能有重复档案)
+        List<EhrBean> EhrBeanList = this.ehrBeanDao.selectBySfz(sfz);
+        String ehrId = "";
+        if (EhrBeanList.size() == 0) {
+            //添加档案操作...部分数据需要访问封面获取
+            JSONObject coverMsg = CxfClient.getCover(wdEhr.get("ID"), IDMap);
+            System.out.println("添加档案..." + sfz);
+            EhrBean ehrBean = KyEhrDao.addEhr(IDMap, wdEhr, coverMsg);
+            ehrBeanDao.insert(ehrBean);
+            ehrId = ehrBean.getId();
+        } else {
+            if (EhrBeanList.get(0).getIdno().equals(sfz)) {
+                //更新档案操作...
+            }
+        }
+        return ehrId;
+    }
+
+    /**
      * 遍历人员全部高血压随访记录并添加或更新
      *
+     * @param IDMap
      * @param mbMsg
      * @param ehrId
      */
-    private void uploadGxy(JSONArray mbMsg, String ehrId) {
+    private void uploadGxy(Map<String, Object> IDMap, JSONArray mbMsg, String ehrId) {
         //遍历高血压随访记录
         for (int gxyIndex = 0; gxyIndex < mbMsg.length(); gxyIndex++) {
             JSONObject GxyFol = mbMsg.getJSONObject(gxyIndex);
             String folTime = GxyFol.get("FollowUpDateStr").toString();
             if (folTime.length() > 9) {
                 List<MbFolHypBean> MbFolHypBeanList = MbFolHypBeanDao.getHyperListByEhrId(ehrId);
+                StringBuffer sfrqs = new StringBuffer("");
                 for (MbFolHypBean MbFolHypBean : MbFolHypBeanList) {
-                    String sfrq = DateUtil.getDateString(MbFolHypBean.getFollowUpDate());
-                    if (sfrq.equals(folTime)) {
-                        //无操作或需要更新随访
-                    } else {
-                        //需要添加随访...
-                        System.out.println("需要添加高血压随访--" + sfrq + "--" + ehrId);
-                    }
+                    sfrqs.append(DateUtil.getDateString(MbFolHypBean.getFollowUpDate()));
+                }
+                if (sfrqs.toString().contains(folTime)) {
+                    //无操作或需要更新随访
+                } else {
+                    //需要添加随访...
+                    System.out.println("需要添加高血压随访--" + folTime + "--" + ehrId);
+                    //获取详细的随访记录 ID:随访记录ID
+                    String ID = GxyFol.get("ID").toString();
+                    JSONObject GxyFolDetail = CxfClient.getGxyFolDetail(IDMap, ID);
+                    //根据获取的随访数据,写入慢病Bean,insert到数据库
+                    MbFolHypBean mbGxy = KyMbDao.addMbGxy(IDMap,GxyFol, GxyFolDetail);
+                    MbFolHypBeanDao.insert(mbGxy);
                 }
             }
         }
@@ -141,52 +176,35 @@ public class UpAndDownMbService {
     /**
      * 遍历人员全部糖尿病随访记录并添加或更新
      *
+     * @param IDMap
      * @param mbMsg
      * @param ehrId
      */
-    private void uploadTnb(JSONArray mbMsg, String ehrId) {
+    private void uploadTnb(Map<String, Object> IDMap, JSONArray mbMsg, String ehrId) {
         //遍历高血压随访记录
-        for (int gxyIndex = 0; gxyIndex < mbMsg.length(); gxyIndex++) {
-            JSONObject GxyFol = mbMsg.getJSONObject(gxyIndex);
-            String folTime = GxyFol.get("FollowUpDateStr").toString();
+        for (int tnbIndex = 0; tnbIndex < mbMsg.length(); tnbIndex++) {
+            JSONObject TnbFol = mbMsg.getJSONObject(tnbIndex);
+            String folTime = TnbFol.get("FollowUpDateStr").toString();
             if (folTime.length() > 9) {
                 List<MbFolDiaBean> MbFolDiaBeanList = MbFolDiaBeanDao.getDiabeListByEhrId(ehrId);
+                StringBuffer sfrqs = new StringBuffer("");
                 for (MbFolDiaBean MbFolDiaBean : MbFolDiaBeanList) {
-                    String sfrq = DateUtil.getDateString(MbFolDiaBean.getFollowUpDate());
-                    if (sfrq.equals(folTime)) {
-                        //无操作或需要更新随访
-                    } else {
-                        //需要添加随访...
-                        System.out.println("需要添加糖尿病随访--" + sfrq + "--" + ehrId);
-                    }
+                    sfrqs.append(DateUtil.getDateString(MbFolDiaBean.getFollowUpDate()));
+                }
+                if (sfrqs.toString().contains(folTime)) {
+                    //无操作或需要更新随访
+                } else {
+                    //需要添加随访...
+                    System.out.println("需要添加糖尿病随访--" + folTime + "--" + ehrId);
+                    //获取详细的随访记录 ID:随访记录ID
+                    String ID = TnbFol.get("ID").toString();
+                    JSONObject TnbFolDetail = CxfClient.getTnbFolDetail(IDMap, ID);
+                    //根据获取的随访数据,写入慢病Bean,insert到数据库
+                    MbFolDiaBean mbTnb = KyMbDao.addMbTnb(IDMap,TnbFol, TnbFolDetail);
+                    MbFolDiaBeanDao.insert(mbTnb);
                 }
             }
         }
-    }
-
-    /**
-     * 更新或添加到wdEhr
-     */
-    private String updateWdEhr(JSONObject wdEhr) {
-        //sfz
-        String sfz = wdEhr.get("CARD_ID").toString();
-        //查wd_Ehr 是否有该sfz 没有则添加(可能有重复档案)
-        List<EhrBean> EhrBeanList = this.EhrBeanDao.selectBySfz(sfz);
-        String ehrId = "";//需要返回
-        if (EhrBeanList.size() == 0) {
-            //添加档案操作...
-            System.out.println("添加档案" + sfz);
-            EhrBean ehr = new EhrBean();
-            //档案号
-            ehr.setId(UUID.randomUUID().toString());
-            //姓名
-            ehr.setName(wdEhr.get("NAME").toString());
-        } else {
-            if (EhrBeanList.get(0).getIdno().equals(sfz)) {
-                //更新档案操作...
-            }
-        }
-        return ehrId;
     }
 
 
@@ -209,7 +227,6 @@ public class UpAndDownMbService {
             //method
             String method = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_method");
             IDMap.put("method", method);
-
 //
 //            //获取用户名
 //            String username = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_username");
@@ -228,18 +245,5 @@ public class UpAndDownMbService {
             e.printStackTrace();
         }
         return orgIdList;
-    }
-
-    public void uploadAllInfo() {
-
-        //第一步:依据卫生机构ID获取下属机构
-        //第二步:遍历下属机构信息,依次抓取信息
-        for (int i = 0; i < 1; i++) {
-            //第三步:
-
-
-            //di
-        }
-
     }
 }

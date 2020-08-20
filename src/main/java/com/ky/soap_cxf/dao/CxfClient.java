@@ -1,18 +1,11 @@
 package com.ky.soap_cxf.dao;
 
 
-import com.ky.common.bean.EhrBean;
-import com.ky.common.dao.EhrBeanDao;
-import com.ky.soap_cxf.help.InvokeRemoteDao;
-import com.ky.soap_cxf.service.UpAndDownMbService;
-import com.mongodb.util.JSON;
+import com.ky.soap_cxf.help.InvokeRemoteHelp;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.omg.CORBA.OBJ_ADAPTER;
-import org.omg.CORBA.ServerRequest;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -34,7 +27,7 @@ public class CxfClient {
         String TradeCode = "48-2";
         String InputParameter = "{\"UserName\":\"" + IDMap.get("username").toString() + "\",\"Password\":\"" + IDMap.get("password").toString() + "\"}";
         Object[] parameters = new Object[]{TradeCode, InputParameter};
-        String resultStr = InvokeRemoteDao.invokeRemoteMethod(url, method, parameters)[0].toString();
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
         JSONObject resultJson = new JSONObject(resultStr);
         JSONObject Msg = resultJson.getJSONObject("Msg");
         JSONArray RegionCodeList = Msg.getJSONArray("RegionCodeList");
@@ -60,7 +53,7 @@ public class CxfClient {
                     "\"PageIndex\": " + i + "\n" +
                     "}";
             Object[] parameters = new Object[]{TradeCode, InputParameter};
-            String resultStr = InvokeRemoteDao.invokeRemoteMethod(url, method, parameters)[0].toString();
+            String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
             JSONObject resultJson = new JSONObject(resultStr);
             Msg = resultJson.getJSONArray("Msg");
         }
@@ -85,14 +78,37 @@ public class CxfClient {
                 "\"PageIndex\":\"0\"\n" +
                 "}";
         Object[] parameters = new Object[]{TradeCode, InputParameter};
-        String resultStr = InvokeRemoteDao.invokeRemoteMethod(url, method, parameters)[0].toString();
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
         JSONObject resultJson = new JSONObject(resultStr);
         JSONArray Msg = resultJson.getJSONArray("Msg");
         return Msg;
     }
 
     /**
-     * 59-1 查询个人高血压随访记录列表
+     * 58-3 高血压随访详细数据
+     * @param IDMap
+     * @param ID
+     * @return
+     */
+    public static JSONObject getGxyFolDetail(Map<String, Object> IDMap, String ID) {
+        String url = IDMap.get("url").toString();
+        String method = IDMap.get("method").toString();
+        String TradeCode = "58-3";
+        String InputParameter = "{\n" +
+                "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
+                "\"PersonID\":\"" + ID + "\"\n" +
+                "}";
+        Object[] parameters = new Object[]{TradeCode, InputParameter};
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
+        JSONObject resultJson = new JSONObject(resultStr);
+        JSONObject Msg = resultJson.getJSONObject("Msg");
+        return Msg;
+    }
+
+
+
+    /**
+     * 59-1 查询个人糖尿病随访记录列表
      *
      * @param IDMap
      * @param personID
@@ -108,9 +124,56 @@ public class CxfClient {
                 "\"PageIndex\":\"0\"\n" +
                 "}";
         Object[] parameters = new Object[]{TradeCode, InputParameter};
-        String resultStr = InvokeRemoteDao.invokeRemoteMethod(url, method, parameters)[0].toString();
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
         JSONObject resultJson = new JSONObject(resultStr);
         JSONArray Msg = resultJson.getJSONArray("Msg");
         return Msg;
     }
+
+    /**
+     * 59-3 获取详细糖尿病随访数据
+     *
+     * @param IDMap
+     * @param ID
+     * @return
+     */
+    public static JSONObject getTnbFolDetail(Map<String, Object> IDMap, String ID) {
+        String url = IDMap.get("url").toString();
+        String method = IDMap.get("method").toString();
+        String TradeCode = "59-3";
+        String InputParameter = "{\n" +
+                "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
+                "\"PersonID\":\"" + ID + "\"\n" +
+                "}";
+        Object[] parameters = new Object[]{TradeCode, InputParameter};
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
+        JSONObject resultJson = new JSONObject(resultStr);
+        JSONObject Msg = resultJson.getJSONObject("Msg");
+        return Msg;
+    }
+
+
+    /**
+     * 55-10 获取档案封面
+     *
+     * @param ID
+     * @param IDMap
+     */
+    public static JSONObject getCover(Object ID, Map<String, Object> IDMap) {
+        String url = IDMap.get("url").toString();
+        String method = IDMap.get("method").toString();
+        String TradeCode = "55-10";
+        String InputParameter = "{\n" +
+                "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
+                "\"ID\":\"" + ID + "\"\n" +
+                "}";
+        Object[] parameters = new Object[]{TradeCode, InputParameter};
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
+        JSONObject resultJson = new JSONObject(resultStr);
+        JSONObject Msg = resultJson.getJSONObject("Msg");
+        return Msg;
+    }
+
+
+
 }

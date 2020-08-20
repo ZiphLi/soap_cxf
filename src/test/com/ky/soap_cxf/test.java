@@ -1,5 +1,9 @@
 package com.ky.soap_cxf;
 
+import com.ky.core.util.DateUtil;
+
+import java.util.Date;
+
 /**
  * Code by lzp on 2020/8/18
  */
@@ -12,7 +16,12 @@ public class test {
 //            if (false) {
 //                total = 5;
 //            }
-//
+
+        String date = "1994-07-25T00:00:00";
+
+        Date date1 = DateUtil.getFormatDateTimeStringForDate(date);
+
+        System.out.println(date1);
 
     }
 

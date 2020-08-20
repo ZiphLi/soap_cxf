@@ -8,7 +8,7 @@ import org.apache.cxf.service.model.BindingOperationInfo;
 import javax.xml.namespace.QName;
 
 
-public class InvokeRemoteDao {
+public class InvokeRemoteHelp {
     /**
      * 远程调用方法
      * @param url
