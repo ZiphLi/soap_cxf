@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.EhrBeanDao">
+    <resultMap id="BaseResultMap" type="com.ky.common.bean.EhrBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="idno" property="idno" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="nation" property="nation" jdbcType="VARCHAR"/>
+        <result column="qy_year" property="qyYear" jdbcType="VARCHAR"/>
+        <result column="mb_type_id" property="mbTypeId" jdbcType="VARCHAR"/>
+        <result column="mb_type" property="mbType" jdbcType="VARCHAR"/>
+        <result column="mb_special_type_id" property="mbSpecialTypeId" jdbcType="VARCHAR"/>
+        <result column="mb_special_type" property="mbSpecialType" jdbcType="VARCHAR"/>
+        <result column="qy_type" property="qyType" jdbcType="VARCHAR"/>
+        <result column="gw_dah" property="gwDah" jdbcType="VARCHAR"/>
+        <result column="gw_dah_id" property="gwDahId" jdbcType="VARCHAR"/>
+        <result column="org_id" property="orgId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="origin" property="origin" jdbcType="VARCHAR"/>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+        <result column="field" property="field" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, idno, sex, address, tel, birthday, nation, qy_year, mb_type_id, mb_type, 
+    mb_special_type_id, mb_special_type, qy_type, gw_dah, gw_dah_id, org_id, org_name, 
+    create_time, update_time, delete_time, status, origin, remarks, field
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from com_ehr
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--通过身份证查找-->
+    <select id="selectBySfz" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from com_ehr
+        where idno = #{sfz,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from com_ehr
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.ky.common.bean.EhrBean">
+    insert into com_ehr (id, name, idno, 
+      sex, address, tel, 
+      birthday, nation, qy_year, 
+      mb_type_id, mb_type, mb_special_type_id, 
+      mb_special_type, qy_type, gw_dah, 
+      gw_dah_id, org_id, org_name, 
+      create_time, update_time, delete_time, 
+      status, origin, remarks, 
+      field)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{nation,jdbcType=VARCHAR}, #{qyYear,jdbcType=VARCHAR}, 
+      #{mbTypeId,jdbcType=VARCHAR}, #{mbType,jdbcType=VARCHAR}, #{mbSpecialTypeId,jdbcType=VARCHAR}, 
+      #{mbSpecialType,jdbcType=VARCHAR}, #{qyType,jdbcType=VARCHAR}, #{gwDah,jdbcType=VARCHAR}, 
+      #{gwDahId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{field,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.ky.common.bean.EhrBean">
+        insert into com_ehr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="idno != null">
+                idno,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="tel != null">
+                tel,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="nation != null">
+                nation,
+            </if>
+            <if test="qyYear != null">
+                qy_year,
+            </if>
+            <if test="mbTypeId != null">
+                mb_type_id,
+            </if>
+            <if test="mbType != null">
+                mb_type,
+            </if>
+            <if test="mbSpecialTypeId != null">
+                mb_special_type_id,
+            </if>
+            <if test="mbSpecialType != null">
+                mb_special_type,
+            </if>
+            <if test="qyType != null">
+                qy_type,
+            </if>
+            <if test="gwDah != null">
+                gw_dah,
+            </if>
+            <if test="gwDahId != null">
+                gw_dah_id,
+            </if>
+            <if test="orgId != null">
+                org_id,
+            </if>
+            <if test="orgName != null">
+                org_name,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteTime != null">
+                delete_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="origin != null">
+                origin,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="field != null">
+                field,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="idno != null">
+                #{idno,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="tel != null">
+                #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="nation != null">
+                #{nation,jdbcType=VARCHAR},
+            </if>
+            <if test="qyYear != null">
+                #{qyYear,jdbcType=VARCHAR},
+            </if>
+            <if test="mbTypeId != null">
+                #{mbTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="mbType != null">
+                #{mbType,jdbcType=VARCHAR},
+            </if>
+            <if test="mbSpecialTypeId != null">
+                #{mbSpecialTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="mbSpecialType != null">
+                #{mbSpecialType,jdbcType=VARCHAR},
+            </if>
+            <if test="qyType != null">
+                #{qyType,jdbcType=VARCHAR},
+            </if>
+            <if test="gwDah != null">
+                #{gwDah,jdbcType=VARCHAR},
+            </if>
+            <if test="gwDahId != null">
+                #{gwDahId,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="orgName != null">
+                #{orgName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="origin != null">
+                #{origin,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="field != null">
+                #{field,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.EhrBean">
+        update com_ehr
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="idno != null">
+                idno = #{idno,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="tel != null">
+                tel = #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="nation != null">
+                nation = #{nation,jdbcType=VARCHAR},
+            </if>
+            <if test="qyYear != null">
+                qy_year = #{qyYear,jdbcType=VARCHAR},
+            </if>
+            <if test="mbTypeId != null">
+                mb_type_id = #{mbTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="mbType != null">
+                mb_type = #{mbType,jdbcType=VARCHAR},
+            </if>
+            <if test="mbSpecialTypeId != null">
+                mb_special_type_id = #{mbSpecialTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="mbSpecialType != null">
+                mb_special_type = #{mbSpecialType,jdbcType=VARCHAR},
+            </if>
+            <if test="qyType != null">
+                qy_type = #{qyType,jdbcType=VARCHAR},
+            </if>
+            <if test="gwDah != null">
+                gw_dah = #{gwDah,jdbcType=VARCHAR},
+            </if>
+            <if test="gwDahId != null">
+                gw_dah_id = #{gwDahId,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                org_id = #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="orgName != null">
+                org_name = #{orgName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="origin != null">
+                origin = #{origin,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="field != null">
+                field = #{field,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.EhrBean">
+    update com_ehr
+    set name = #{name,jdbcType=VARCHAR},
+      idno = #{idno,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      nation = #{nation,jdbcType=VARCHAR},
+      qy_year = #{qyYear,jdbcType=VARCHAR},
+      mb_type_id = #{mbTypeId,jdbcType=VARCHAR},
+      mb_type = #{mbType,jdbcType=VARCHAR},
+      mb_special_type_id = #{mbSpecialTypeId,jdbcType=VARCHAR},
+      mb_special_type = #{mbSpecialType,jdbcType=VARCHAR},
+      qy_type = #{qyType,jdbcType=VARCHAR},
+      gw_dah = #{gwDah,jdbcType=VARCHAR},
+      gw_dah_id = #{gwDahId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      origin = #{origin,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      field = #{field,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

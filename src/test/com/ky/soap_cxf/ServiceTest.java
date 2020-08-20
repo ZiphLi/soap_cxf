@@ -1,6 +1,5 @@
 package com.ky.soap_cxf;
 
-import com.ky.common.bean.JktjDaBean;
 import com.ky.soap_cxf.dao.CxfClient;
 import com.ky.soap_cxf.service.UpAndDownMbService;
 import org.junit.Test;

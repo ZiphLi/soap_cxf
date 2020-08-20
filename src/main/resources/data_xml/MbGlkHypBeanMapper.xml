@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.MbGlkHypBeanDao" >
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.MbGlkHypBean" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="ehr_id" property="ehrId" jdbcType="VARCHAR" />
+    <result column="idno" property="idno" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="standard_body_id" property="standardBodyId" jdbcType="VARCHAR" />
+    <result column="standard_follow_id" property="standardFollowId" jdbcType="VARCHAR" />
+    <result column="plan_date" property="planDate" jdbcType="DATE" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="last_fol_id" property="lastFolId" jdbcType="VARCHAR" />
+    <result column="last_date" property="lastDate" jdbcType="DATE" />
+    <result column="create_date" property="createDate" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="is_precise" property="isPrecise" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="field" property="field" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ehr_id, idno, name, tel, type, birthday, org_id, org_name, standard_body_id, 
+    standard_follow_id, plan_date, img_url, last_fol_id, last_date, create_date, status, 
+    is_precise, remarks, field
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from mb_manage_card_hypertension
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from mb_manage_card_hypertension
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.MbGlkHypBean" >
+    insert into mb_manage_card_hypertension (id, ehr_id, idno, 
+      name, tel, type, birthday, 
+      org_id, org_name, standard_body_id, 
+      standard_follow_id, plan_date, img_url, 
+      last_fol_id, last_date, create_date, 
+      status, is_precise, remarks, 
+      field)
+    values (#{id,jdbcType=VARCHAR}, #{ehrId,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{standardBodyId,jdbcType=VARCHAR}, 
+      #{standardFollowId,jdbcType=VARCHAR}, #{planDate,jdbcType=DATE}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{lastFolId,jdbcType=VARCHAR}, #{lastDate,jdbcType=DATE}, #{createDate,jdbcType=DATE}, 
+      #{status,jdbcType=VARCHAR}, #{isPrecise,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{field,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.MbGlkHypBean" >
+    insert into mb_manage_card_hypertension
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ehrId != null" >
+        ehr_id,
+      </if>
+      <if test="idno != null" >
+        idno,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="standardBodyId != null" >
+        standard_body_id,
+      </if>
+      <if test="standardFollowId != null" >
+        standard_follow_id,
+      </if>
+      <if test="planDate != null" >
+        plan_date,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="lastFolId != null" >
+        last_fol_id,
+      </if>
+      <if test="lastDate != null" >
+        last_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isPrecise != null" >
+        is_precise,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="field != null" >
+        field,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ehrId != null" >
+        #{ehrId,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardBodyId != null" >
+        #{standardBodyId,jdbcType=VARCHAR},
+      </if>
+      <if test="standardFollowId != null" >
+        #{standardFollowId,jdbcType=VARCHAR},
+      </if>
+      <if test="planDate != null" >
+        #{planDate,jdbcType=DATE},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFolId != null" >
+        #{lastFolId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrecise != null" >
+        #{isPrecise,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null" >
+        #{field,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.MbGlkHypBean" >
+    update mb_manage_card_hypertension
+    <set >
+      <if test="ehrId != null" >
+        ehr_id = #{ehrId,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardBodyId != null" >
+        standard_body_id = #{standardBodyId,jdbcType=VARCHAR},
+      </if>
+      <if test="standardFollowId != null" >
+        standard_follow_id = #{standardFollowId,jdbcType=VARCHAR},
+      </if>
+      <if test="planDate != null" >
+        plan_date = #{planDate,jdbcType=DATE},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFolId != null" >
+        last_fol_id = #{lastFolId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        last_date = #{lastDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrecise != null" >
+        is_precise = #{isPrecise,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null" >
+        field = #{field,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.MbGlkHypBean" >
+    update mb_manage_card_hypertension
+    set ehr_id = #{ehrId,jdbcType=VARCHAR},
+      idno = #{idno,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      standard_body_id = #{standardBodyId,jdbcType=VARCHAR},
+      standard_follow_id = #{standardFollowId,jdbcType=VARCHAR},
+      plan_date = #{planDate,jdbcType=DATE},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      last_fol_id = #{lastFolId,jdbcType=VARCHAR},
+      last_date = #{lastDate,jdbcType=DATE},
+      create_date = #{createDate,jdbcType=DATE},
+      status = #{status,jdbcType=VARCHAR},
+      is_precise = #{isPrecise,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      field = #{field,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

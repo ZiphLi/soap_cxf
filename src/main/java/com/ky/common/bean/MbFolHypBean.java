@@ -1,62 +1,31 @@
 package com.ky.common.bean;
 
 import java.util.Date;
-import java.util.List;
 
-public class WdMbDiabeFol {
+public class MbFolHypBean {
+    private String id;
 
+    private String origin;
 
-    /**
-     * 档案号id (平邑)
-     */
-    private String dah;
+    private String folUrl1;
 
-    public String getDah() {
-        return dah;
-    }
+    private String folUrl2;
 
-    public void setDah(String dah) {
-        this.dah = dah;
-    }
+    private String wpzyy;
 
-    /**
-     * 公卫记录id (平邑)
-     */
-    private String GwId;
+    private String cardId;
 
-    public String getGwId() {
-        return GwId;
-    }
-
-    public void setGwId(String gwId) {
-        GwId = gwId;
-    }
-
-    private String uuid;
-
-    private String orgin;
-
-    private String folUrl;
-
-    private String idno;
+    private String ehrId;
 
     private String doctorId;
 
     private String doctorName;
 
-    private String doctorSignUrl;
-
-    private String teamId;
-
     private String orgId;
 
     private String orgName;
 
-    private Date birthday;
-
     private String name;
-
-    private String identifier;
 
     private String followUpStyle;
 
@@ -82,10 +51,6 @@ public class WdMbDiabeFol {
 
     private Integer heartRate;
 
-    private String footPulstates;
-
-    private String footPilstatesWhere;
-
     private String signOther;
 
     private String countCigarette;
@@ -104,25 +69,19 @@ public class WdMbDiabeFol {
 
     private String frequencyExp;
 
-    private String stapleFood;
+    private String saltSituation;
 
-    private String stableFoodExp;
+    private String saltSituationExp;
 
     private String psyRecovery;
 
     private String treatmentCompliance;
 
-    private String fbg;
+    private String otherCheck;
 
-    private Double ghb;
+    private Object medication;
 
-    private Date ghbKDate;
-
-    private String ghbOther;
-
-    private String insulinVariety;
-
-    private String insulinDirections;
+    private Object medicationExp;
 
     private String medicationCompliance;
 
@@ -130,15 +89,11 @@ public class WdMbDiabeFol {
 
     private String adverceReactionDetail;
 
-    private String hypoglycemiaReaction;
-
     private String classifyFollowUp;
 
+    private String classifyFollowUp1;
+
     private String managementNextStep;
-
-    private String insulinAdjustmmentVariety;
-
-    private String insulinAdjustmmentDirections;
 
     private String transferReason;
 
@@ -156,7 +111,17 @@ public class WdMbDiabeFol {
 
     private String juminNameUrl;
 
+    private String isStandard;
+
+    private String jkzd;
+
     private String remarks;
+
+    private String longitude;
+
+    private String latitude;
+
+    private String location;
 
     private Date lostDate;
 
@@ -165,6 +130,10 @@ public class WdMbDiabeFol {
     private Date deathDate;
 
     private String deathReason;
+
+    private String status;
+
+    private Date createTime;
 
     private String gwSfId;
 
@@ -182,55 +151,64 @@ public class WdMbDiabeFol {
 
     private Date gwUpUpdateTime;
 
-    private List<WdMbMedicine> nowMedList;
-    private List<WdMbMedicine> adjustMedList;
+    private Date updateTime;
 
-    public List<WdMbMedicine> getAdjustMedList () {
-        return adjustMedList;
+    private String field;
+
+    public String getId() {
+        return id;
     }
 
-    public void setAdjustMedList (List<WdMbMedicine> adjustMedList) {
-        this.adjustMedList = adjustMedList;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public List<WdMbMedicine> getNowMedList () {
-        return nowMedList;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setNowMedList (List<WdMbMedicine> nowMedList) {
-        this.nowMedList = nowMedList;
+    public void setOrigin(String origin) {
+        this.origin = origin == null ? null : origin.trim();
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getFolUrl1() {
+        return folUrl1;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid == null ? null : uuid.trim();
+    public void setFolUrl1(String folUrl1) {
+        this.folUrl1 = folUrl1 == null ? null : folUrl1.trim();
     }
 
-    public String getOrgin() {
-        return orgin;
+    public String getFolUrl2() {
+        return folUrl2;
     }
 
-    public void setOrgin(String orgin) {
-        this.orgin = orgin == null ? null : orgin.trim();
+    public void setFolUrl2(String folUrl2) {
+        this.folUrl2 = folUrl2 == null ? null : folUrl2.trim();
     }
 
-    public String getFolUrl() {
-        return folUrl;
+    public String getWpzyy() {
+        return wpzyy;
     }
 
-    public void setFolUrl(String folUrl) {
-        this.folUrl = folUrl == null ? null : folUrl.trim();
+    public void setWpzyy(String wpzyy) {
+        this.wpzyy = wpzyy == null ? null : wpzyy.trim();
     }
 
-    public String getIdno() {
-        return idno;
+    public String getCardId() {
+        return cardId;
     }
 
-    public void setIdno(String idno) {
-        this.idno = idno == null ? null : idno.trim();
+    public void setCardId(String cardId) {
+        this.cardId = cardId == null ? null : cardId.trim();
+    }
+
+    public String getEhrId() {
+        return ehrId;
+    }
+
+    public void setEhrId(String ehrId) {
+        this.ehrId = ehrId == null ? null : ehrId.trim();
     }
 
     public String getDoctorId() {
@@ -249,22 +227,6 @@ public class WdMbDiabeFol {
         this.doctorName = doctorName == null ? null : doctorName.trim();
     }
 
-    public String getDoctorSignUrl() {
-        return doctorSignUrl;
-    }
-
-    public void setDoctorSignUrl(String doctorSignUrl) {
-        this.doctorSignUrl = doctorSignUrl == null ? null : doctorSignUrl.trim();
-    }
-
-    public String getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(String teamId) {
-        this.teamId = teamId == null ? null : teamId.trim();
-    }
-
     public String getOrgId() {
         return orgId;
     }
@@ -281,28 +243,12 @@ public class WdMbDiabeFol {
         this.orgName = orgName == null ? null : orgName.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier == null ? null : identifier.trim();
     }
 
     public String getFollowUpStyle() {
@@ -401,22 +347,6 @@ public class WdMbDiabeFol {
         this.heartRate = heartRate;
     }
 
-    public String getFootPulstates() {
-        return footPulstates;
-    }
-
-    public void setFootPulstates(String footPulstates) {
-        this.footPulstates = footPulstates == null ? null : footPulstates.trim();
-    }
-
-    public String getFootPilstatesWhere() {
-        return footPilstatesWhere;
-    }
-
-    public void setFootPilstatesWhere(String footPilstatesWhere) {
-        this.footPilstatesWhere = footPilstatesWhere == null ? null : footPilstatesWhere.trim();
-    }
-
     public String getSignOther() {
         return signOther;
     }
@@ -489,20 +419,20 @@ public class WdMbDiabeFol {
         this.frequencyExp = frequencyExp == null ? null : frequencyExp.trim();
     }
 
-    public String getStapleFood() {
-        return stapleFood;
+    public String getSaltSituation() {
+        return saltSituation;
     }
 
-    public void setStapleFood(String stapleFood) {
-        this.stapleFood = stapleFood == null ? null : stapleFood.trim();
+    public void setSaltSituation(String saltSituation) {
+        this.saltSituation = saltSituation == null ? null : saltSituation.trim();
     }
 
-    public String getStableFoodExp() {
-        return stableFoodExp;
+    public String getSaltSituationExp() {
+        return saltSituationExp;
     }
 
-    public void setStableFoodExp(String stableFoodExp) {
-        this.stableFoodExp = stableFoodExp == null ? null : stableFoodExp.trim();
+    public void setSaltSituationExp(String saltSituationExp) {
+        this.saltSituationExp = saltSituationExp == null ? null : saltSituationExp.trim();
     }
 
     public String getPsyRecovery() {
@@ -521,52 +451,28 @@ public class WdMbDiabeFol {
         this.treatmentCompliance = treatmentCompliance == null ? null : treatmentCompliance.trim();
     }
 
-    public String getFbg() {
-        return fbg;
+    public String getOtherCheck() {
+        return otherCheck;
     }
 
-    public void setFbg(String fbg) {
-        this.fbg = fbg == null ? null : fbg.trim();
+    public void setOtherCheck(String otherCheck) {
+        this.otherCheck = otherCheck == null ? null : otherCheck.trim();
     }
 
-    public Double getGhb() {
-        return ghb;
+    public Object getMedication() {
+        return medication;
     }
 
-    public void setGhb(Double ghb) {
-        this.ghb = ghb;
+    public void setMedication(Object medication) {
+        this.medication = medication;
     }
 
-    public Date getGhbKDate() {
-        return ghbKDate;
+    public Object getMedicationExp() {
+        return medicationExp;
     }
 
-    public void setGhbKDate(Date ghbKDate) {
-        this.ghbKDate = ghbKDate;
-    }
-
-    public String getGhbOther() {
-        return ghbOther;
-    }
-
-    public void setGhbOther(String ghbOther) {
-        this.ghbOther = ghbOther == null ? null : ghbOther.trim();
-    }
-
-    public String getInsulinVariety() {
-        return insulinVariety;
-    }
-
-    public void setInsulinVariety(String insulinVariety) {
-        this.insulinVariety = insulinVariety == null ? null : insulinVariety.trim();
-    }
-
-    public String getInsulinDirections() {
-        return insulinDirections;
-    }
-
-    public void setInsulinDirections(String insulinDirections) {
-        this.insulinDirections = insulinDirections == null ? null : insulinDirections.trim();
+    public void setMedicationExp(Object medicationExp) {
+        this.medicationExp = medicationExp;
     }
 
     public String getMedicationCompliance() {
@@ -593,14 +499,6 @@ public class WdMbDiabeFol {
         this.adverceReactionDetail = adverceReactionDetail == null ? null : adverceReactionDetail.trim();
     }
 
-    public String getHypoglycemiaReaction() {
-        return hypoglycemiaReaction;
-    }
-
-    public void setHypoglycemiaReaction(String hypoglycemiaReaction) {
-        this.hypoglycemiaReaction = hypoglycemiaReaction == null ? null : hypoglycemiaReaction.trim();
-    }
-
     public String getClassifyFollowUp() {
         return classifyFollowUp;
     }
@@ -609,28 +507,20 @@ public class WdMbDiabeFol {
         this.classifyFollowUp = classifyFollowUp == null ? null : classifyFollowUp.trim();
     }
 
+    public String getClassifyFollowUp1() {
+        return classifyFollowUp1;
+    }
+
+    public void setClassifyFollowUp1(String classifyFollowUp1) {
+        this.classifyFollowUp1 = classifyFollowUp1 == null ? null : classifyFollowUp1.trim();
+    }
+
     public String getManagementNextStep() {
         return managementNextStep;
     }
 
     public void setManagementNextStep(String managementNextStep) {
         this.managementNextStep = managementNextStep == null ? null : managementNextStep.trim();
-    }
-
-    public String getInsulinAdjustmmentVariety() {
-        return insulinAdjustmmentVariety;
-    }
-
-    public void setInsulinAdjustmmentVariety(String insulinAdjustmmentVariety) {
-        this.insulinAdjustmmentVariety = insulinAdjustmmentVariety == null ? null : insulinAdjustmmentVariety.trim();
-    }
-
-    public String getInsulinAdjustmmentDirections() {
-        return insulinAdjustmmentDirections;
-    }
-
-    public void setInsulinAdjustmmentDirections(String insulinAdjustmmentDirections) {
-        this.insulinAdjustmmentDirections = insulinAdjustmmentDirections == null ? null : insulinAdjustmmentDirections.trim();
     }
 
     public String getTransferReason() {
@@ -697,12 +587,52 @@ public class WdMbDiabeFol {
         this.juminNameUrl = juminNameUrl == null ? null : juminNameUrl.trim();
     }
 
+    public String getIsStandard() {
+        return isStandard;
+    }
+
+    public void setIsStandard(String isStandard) {
+        this.isStandard = isStandard == null ? null : isStandard.trim();
+    }
+
+    public String getJkzd() {
+        return jkzd;
+    }
+
+    public void setJkzd(String jkzd) {
+        this.jkzd = jkzd == null ? null : jkzd.trim();
+    }
+
     public String getRemarks() {
         return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude == null ? null : longitude.trim();
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude == null ? null : latitude.trim();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location == null ? null : location.trim();
     }
 
     public Date getLostDate() {
@@ -735,6 +665,22 @@ public class WdMbDiabeFol {
 
     public void setDeathReason(String deathReason) {
         this.deathReason = deathReason == null ? null : deathReason.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getGwSfId() {
@@ -799,5 +745,21 @@ public class WdMbDiabeFol {
 
     public void setGwUpUpdateTime(Date gwUpUpdateTime) {
         this.gwUpUpdateTime = gwUpUpdateTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field == null ? null : field.trim();
     }
 }

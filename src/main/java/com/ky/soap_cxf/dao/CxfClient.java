@@ -1,8 +1,8 @@
 package com.ky.soap_cxf.dao;
 
 
-import com.ky.common.bean.WdEhrBean;
-import com.ky.common.dao.WdEhrBeanDao;
+import com.ky.common.bean.EhrBean;
+import com.ky.common.dao.EhrBeanDao;
 import com.ky.soap_cxf.help.InvokeRemoteDao;
 import com.ky.soap_cxf.service.UpAndDownMbService;
 import com.mongodb.util.JSON;
