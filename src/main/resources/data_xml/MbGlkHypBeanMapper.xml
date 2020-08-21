@@ -34,6 +34,15 @@
     from mb_manage_card_hypertension
     where id = #{id,jdbcType=VARCHAR}
   </select>
+
+<!--  根据身份证查高血压管理卡队列(可能重复)-->
+  <select id="selectBySfz" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from mb_manage_card_hypertension
+    where idno = #{sfz,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from mb_manage_card_hypertension
     where id = #{id,jdbcType=VARCHAR}

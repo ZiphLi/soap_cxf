@@ -40,7 +40,7 @@ public class CxfClient {
      *
      * @param IDMap
      */
-    public static JSONArray getPersonDa(Map<String, Object> IDMap, String RegionCode, int index) {
+    public static JSONArray getPersonDa(Map<String, Object> IDMap, int index) {
         JSONArray Msg = new JSONArray();
         for (int i = 0; i < index; i++) {
             String url = IDMap.get("url").toString();
@@ -48,7 +48,8 @@ public class CxfClient {
             String TradeCode = "55-12";
             String InputParameter = "{\n" +
                     "\"ProductCode\": \"" + IDMap.get("productCode").toString() + "\",\n" +
-                    "\"RegionCode\": \"" + RegionCode + "\",\n" +
+                    "\"RegionCode\": \"" + IDMap.get("RegionCode").toString() + "\",\n" +
+                    "\"IsStatus\": 0,\n" +
                     "\"PageSize\": 100,\n" +
                     "\"PageIndex\": " + i + "\n" +
                     "}";
@@ -86,6 +87,7 @@ public class CxfClient {
 
     /**
      * 58-3 高血压随访详细数据
+     *
      * @param IDMap
      * @param ID
      * @return
@@ -104,7 +106,6 @@ public class CxfClient {
         JSONObject Msg = resultJson.getJSONObject("Msg");
         return Msg;
     }
-
 
 
     /**
@@ -175,5 +176,56 @@ public class CxfClient {
     }
 
 
+    /**
+     * 57-1 查询个人慢病名册列表(高血压管理卡)
+     *
+     * @param IDMap
+     * @param wdEhr
+     * @return
+     */
+    public static JSONObject getGxyGlkMsg(Map<String, Object> IDMap, JSONObject wdEhr) {
+        String url = IDMap.get("url").toString();
+        String method = IDMap.get("method").toString();
+        String TradeCode = "57-1";
+        String InputParameter = "{\n" +
+                "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
+                "\"RegionID\":\"" + IDMap.get("RegionCode").toString() + "\",\n" +
+                "\"BuildType\":\"高血压\",\n" +
+                "\"KeyValue\":\"" + wdEhr.get("CARD_ID").toString() + "\",\n" +
+                "\"PageSize\":\"100\",\n" +
+                "\"PageIndex\":\"0\"\n" +
+                "}";
+        Object[] parameters = new Object[]{TradeCode, InputParameter};
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
+        JSONObject resultJson = new JSONObject(resultStr);
+        JSONObject Msg = resultJson.getJSONArray("Msg").getJSONObject(0);
 
+        if (resultJson.getJSONArray("Msg").length() > 1) {
+            System.err.println(wdEhr.get("CARD_ID").toString() + "有多个管理卡");
+        }
+        return Msg;
+    }
+
+    /**
+     * 57-7 查询个人具体慢病名册
+     *
+     * @param IDMap
+     * @param ID
+     * @return
+     */
+    public static JSONObject getPerSonMbMc(Map<String, Object> IDMap, String ID) {
+        String url = IDMap.get("url").toString();
+        String method = IDMap.get("method").toString();
+        String TradeCode = "57-7";
+        String InputParameter = "{\n" +
+                "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
+                "\"ID\":\"" + ID + "\",\n" +
+                "\"BuildType\":\"高血压\"\n" +
+                "}";
+        Object[] parameters = new Object[]{TradeCode, InputParameter};
+        String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
+        JSONObject resultJson = new JSONObject(resultStr);
+        JSONObject Msg = resultJson.getJSONObject("Msg");
+        return Msg;
+    }
 }

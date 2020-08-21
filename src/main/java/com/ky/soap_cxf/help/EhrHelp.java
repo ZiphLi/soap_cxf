@@ -214,7 +214,7 @@ public class EhrHelp {
      */
     public static String encodeMbSpecial(JSONObject wdEhr) {
         StringBuffer mbType = new StringBuffer("");
-        if (wdEhr.get("IS_POOR").toString().contains("1")) {
+        if (wdEhr.get("IS_POOR").toString().contains("2")) {
             mbType.append("贫困,");
         }
 

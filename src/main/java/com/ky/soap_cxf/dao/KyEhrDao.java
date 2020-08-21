@@ -16,13 +16,13 @@ public class KyEhrDao {
     /**
      * 添加ehr到数据库
      *
+     * @param ehr
      * @param IDMap
      * @param wdEhr
      * @param coverMsg
      * @return
      */
-    public static EhrBean addEhr(Map<String, Object> IDMap, JSONObject wdEhr, JSONObject coverMsg) {
-        EhrBean ehr = new EhrBean();
+    public static EhrBean addEhr(EhrBean ehr, Map<String, Object> IDMap, JSONObject wdEhr, JSONObject coverMsg) {
         //档案号
         ehr.setId(UUID.randomUUID().toString());
         //姓名
@@ -52,7 +52,7 @@ public class KyEhrDao {
         //签约类型(不写)
 
         //公卫档案号
-        ehr.setGwDah(wdEhr.get("ID").toString());
+        ehr.setGwDah(wdEhr.get("PERSON_CODE").toString());
         //公卫档案号对应记录ID
 
         //所属卫生室
