@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.MbFolDiaBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.MbFolDiaBean" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="origin" property="origin" jdbcType="VARCHAR" />
+    <result column="fol_url1" property="folUrl1" jdbcType="VARCHAR" />
+    <result column="fol_url2" property="folUrl2" jdbcType="VARCHAR" />
+    <result column="wpzyy" property="wpzyy" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="ehr_id" property="ehrId" jdbcType="VARCHAR" />
+    <result column="doctor_id" property="doctorId" jdbcType="VARCHAR" />
+    <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="follow_up_style" property="followUpStyle" jdbcType="VARCHAR" />
+    <result column="follow_up_date" property="followUpDate" jdbcType="DATE" />
+    <result column="symptom" property="symptom" jdbcType="VARCHAR" />
+    <result column="symptom_other" property="symptomOther" jdbcType="VARCHAR" />
+    <result column="high_pressure" property="highPressure" jdbcType="INTEGER" />
+    <result column="low_pressure" property="lowPressure" jdbcType="INTEGER" />
+    <result column="height" property="height" jdbcType="DOUBLE" />
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="weight_exp" property="weightExp" jdbcType="DOUBLE" />
+    <result column="bmi" property="bmi" jdbcType="DOUBLE" />
+    <result column="bmi_exp" property="bmiExp" jdbcType="DOUBLE" />
+    <result column="heart_rate" property="heartRate" jdbcType="INTEGER" />
+    <result column="foot_pulstates" property="footPulstates" jdbcType="VARCHAR" />
+    <result column="foot_pilstates_where" property="footPilstatesWhere" jdbcType="VARCHAR" />
+    <result column="sign_other" property="signOther" jdbcType="VARCHAR" />
+    <result column="count_cigarette" property="countCigarette" jdbcType="VARCHAR" />
+    <result column="count_cigarette_exp" property="countCigaretteExp" jdbcType="VARCHAR" />
+    <result column="count_wine" property="countWine" jdbcType="VARCHAR" />
+    <result column="count_wine_exp" property="countWineExp" jdbcType="VARCHAR" />
+    <result column="exercise" property="exercise" jdbcType="VARCHAR" />
+    <result column="frequency" property="frequency" jdbcType="VARCHAR" />
+    <result column="exercise_exp" property="exerciseExp" jdbcType="VARCHAR" />
+    <result column="frequency_exp" property="frequencyExp" jdbcType="VARCHAR" />
+    <result column="staple_food" property="stapleFood" jdbcType="VARCHAR" />
+    <result column="stable_food_exp" property="stableFoodExp" jdbcType="VARCHAR" />
+    <result column="psy_recovery" property="psyRecovery" jdbcType="VARCHAR" />
+    <result column="treatment_compliance" property="treatmentCompliance" jdbcType="VARCHAR" />
+    <result column="glu" property="glu" jdbcType="DOUBLE" />
+    <result column="GHb" property="ghb" jdbcType="DOUBLE" />
+    <result column="GHb_date" property="ghbDate" jdbcType="DATE" />
+    <result column="GHb_other" property="ghbOther" jdbcType="VARCHAR" />
+    <result column="ch_xt" property="chXt" jdbcType="VARCHAR" />
+    <result column="sj_xt" property="sjXt" jdbcType="VARCHAR" />
+    <result column="insulin_variety" property="insulinVariety" jdbcType="VARCHAR" />
+    <result column="insulin_directions" property="insulinDirections" jdbcType="VARCHAR" />
+    <result column="medication" property="medication" jdbcType="OTHER" />
+    <result column="medication_exp" property="medicationExp" jdbcType="OTHER" />
+    <result column="medication_compliance" property="medicationCompliance" jdbcType="VARCHAR" />
+    <result column="adverce_reaction_code" property="adverceReactionCode" jdbcType="VARCHAR" />
+    <result column="adverce_reaction_detail" property="adverceReactionDetail" jdbcType="VARCHAR" />
+    <result column="hypoglycemia_reaction" property="hypoglycemiaReaction" jdbcType="VARCHAR" />
+    <result column="classify_follow_up" property="classifyFollowUp" jdbcType="VARCHAR" />
+    <result column="classify_follow_up1" property="classifyFollowUp1" jdbcType="VARCHAR" />
+    <result column="management_next_step" property="managementNextStep" jdbcType="VARCHAR" />
+    <result column="insulin_adjustmment_variety" property="insulinAdjustmmentVariety" jdbcType="VARCHAR" />
+    <result column="insulin_adjustmment_directions" property="insulinAdjustmmentDirections" jdbcType="VARCHAR" />
+    <result column="transfer_reason" property="transferReason" jdbcType="VARCHAR" />
+    <result column="transfer_org" property="transferOrg" jdbcType="VARCHAR" />
+    <result column="contract_name" property="contractName" jdbcType="VARCHAR" />
+    <result column="contract_tel" property="contractTel" jdbcType="VARCHAR" />
+    <result column="transfer_result" property="transferResult" jdbcType="VARCHAR" />
+    <result column="contract_impression" property="contractImpression" jdbcType="VARCHAR" />
+    <result column="contract_jws" property="contractJws" jdbcType="VARCHAR" />
+    <result column="contract_cure" property="contractCure" jdbcType="VARCHAR" />
+    <result column="next_date" property="nextDate" jdbcType="DATE" />
+    <result column="jumin_name" property="juminName" jdbcType="VARCHAR" />
+    <result column="jumin_name_url" property="juminNameUrl" jdbcType="VARCHAR" />
+    <result column="jkzd" property="jkzd" jdbcType="VARCHAR" />
+    <result column="is_standard" property="isStandard" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="lost_date" property="lostDate" jdbcType="TIMESTAMP" />
+    <result column="lost_reason" property="lostReason" jdbcType="VARCHAR" />
+    <result column="death_date" property="deathDate" jdbcType="DATE" />
+    <result column="death_reason" property="deathReason" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="gw_sf_id" property="gwSfId" jdbcType="VARCHAR" />
+    <result column="gw_sf_dah" property="gwSfDah" jdbcType="VARCHAR" />
+    <result column="gw_da_status" property="gwDaStatus" jdbcType="VARCHAR" />
+    <result column="gw_da_msg" property="gwDaMsg" jdbcType="VARCHAR" />
+    <result column="gw_up_flag" property="gwUpFlag" jdbcType="VARCHAR" />
+    <result column="gw_up_msg" property="gwUpMsg" jdbcType="VARCHAR" />
+    <result column="gw_up_create_time" property="gwUpCreateTime" jdbcType="TIMESTAMP" />
+    <result column="gw_up_update_time" property="gwUpUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="field" property="field" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, origin, fol_url1, fol_url2, wpzyy, card_id, ehr_id, doctor_id, doctor_name, org_id, 
+    org_name, name, follow_up_style, follow_up_date, symptom, symptom_other, high_pressure, 
+    low_pressure, height, weight, weight_exp, bmi, bmi_exp, heart_rate, foot_pulstates, 
+    foot_pilstates_where, sign_other, count_cigarette, count_cigarette_exp, count_wine, 
+    count_wine_exp, exercise, frequency, exercise_exp, frequency_exp, staple_food, stable_food_exp, 
+    psy_recovery, treatment_compliance, glu, GHb, GHb_date, GHb_other, ch_xt, sj_xt, 
+    insulin_variety, insulin_directions, medication, medication_exp, medication_compliance, 
+    adverce_reaction_code, adverce_reaction_detail, hypoglycemia_reaction, classify_follow_up, 
+    classify_follow_up1, management_next_step, insulin_adjustmment_variety, insulin_adjustmment_directions, 
+    transfer_reason, transfer_org, contract_name, contract_tel, transfer_result, contract_impression, 
+    contract_jws, contract_cure, next_date, jumin_name, jumin_name_url, jkzd, is_standard, 
+    remarks, latitude, longitude, location, lost_date, lost_reason, death_date, death_reason, 
+    status, create_time, gw_sf_id, gw_sf_dah, gw_da_status, gw_da_msg, gw_up_flag, gw_up_msg, 
+    gw_up_create_time, gw_up_update_time, update_time, field
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from mb_fol_diabetes
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from mb_fol_diabetes
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.MbFolDiaBean" >
+    insert into mb_fol_diabetes (id, origin, fol_url1, 
+      fol_url2, wpzyy, card_id, 
+      ehr_id, doctor_id, doctor_name, 
+      org_id, org_name, name, 
+      follow_up_style, follow_up_date, symptom, 
+      symptom_other, high_pressure, low_pressure, 
+      height, weight, weight_exp, 
+      bmi, bmi_exp, heart_rate, 
+      foot_pulstates, foot_pilstates_where, sign_other, 
+      count_cigarette, count_cigarette_exp, count_wine, 
+      count_wine_exp, exercise, frequency, 
+      exercise_exp, frequency_exp, staple_food, 
+      stable_food_exp, psy_recovery, treatment_compliance, 
+      glu, GHb, GHb_date, GHb_other, 
+      ch_xt, sj_xt, insulin_variety, 
+      insulin_directions, medication, medication_exp, 
+      medication_compliance, adverce_reaction_code, 
+      adverce_reaction_detail, hypoglycemia_reaction, 
+      classify_follow_up, classify_follow_up1, management_next_step, 
+      insulin_adjustmment_variety, insulin_adjustmment_directions, 
+      transfer_reason, transfer_org, contract_name, 
+      contract_tel, transfer_result, contract_impression, 
+      contract_jws, contract_cure, next_date, 
+      jumin_name, jumin_name_url, jkzd, 
+      is_standard, remarks, latitude, 
+      longitude, location, lost_date, 
+      lost_reason, death_date, death_reason, 
+      status, create_time, gw_sf_id, 
+      gw_sf_dah, gw_da_status, gw_da_msg, 
+      gw_up_flag, gw_up_msg, gw_up_create_time, 
+      gw_up_update_time, update_time, field
+      )
+    values (#{id,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, #{folUrl1,jdbcType=VARCHAR}, 
+      #{folUrl2,jdbcType=VARCHAR}, #{wpzyy,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{ehrId,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, #{doctorName,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{followUpStyle,jdbcType=VARCHAR}, #{followUpDate,jdbcType=DATE}, #{symptom,jdbcType=VARCHAR}, 
+      #{symptomOther,jdbcType=VARCHAR}, #{highPressure,jdbcType=INTEGER}, #{lowPressure,jdbcType=INTEGER}, 
+      #{height,jdbcType=DOUBLE}, #{weight,jdbcType=DOUBLE}, #{weightExp,jdbcType=DOUBLE}, 
+      #{bmi,jdbcType=DOUBLE}, #{bmiExp,jdbcType=DOUBLE}, #{heartRate,jdbcType=INTEGER}, 
+      #{footPulstates,jdbcType=VARCHAR}, #{footPilstatesWhere,jdbcType=VARCHAR}, #{signOther,jdbcType=VARCHAR}, 
+      #{countCigarette,jdbcType=VARCHAR}, #{countCigaretteExp,jdbcType=VARCHAR}, #{countWine,jdbcType=VARCHAR}, 
+      #{countWineExp,jdbcType=VARCHAR}, #{exercise,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, 
+      #{exerciseExp,jdbcType=VARCHAR}, #{frequencyExp,jdbcType=VARCHAR}, #{stapleFood,jdbcType=VARCHAR}, 
+      #{stableFoodExp,jdbcType=VARCHAR}, #{psyRecovery,jdbcType=VARCHAR}, #{treatmentCompliance,jdbcType=VARCHAR}, 
+      #{glu,jdbcType=DOUBLE}, #{ghb,jdbcType=DOUBLE}, #{ghbDate,jdbcType=DATE}, #{ghbOther,jdbcType=VARCHAR}, 
+      #{chXt,jdbcType=VARCHAR}, #{sjXt,jdbcType=VARCHAR}, #{insulinVariety,jdbcType=VARCHAR}, 
+      #{insulinDirections,jdbcType=VARCHAR}, #{medication,jdbcType=OTHER}, #{medicationExp,jdbcType=OTHER}, 
+      #{medicationCompliance,jdbcType=VARCHAR}, #{adverceReactionCode,jdbcType=VARCHAR}, 
+      #{adverceReactionDetail,jdbcType=VARCHAR}, #{hypoglycemiaReaction,jdbcType=VARCHAR}, 
+      #{classifyFollowUp,jdbcType=VARCHAR}, #{classifyFollowUp1,jdbcType=VARCHAR}, #{managementNextStep,jdbcType=VARCHAR}, 
+      #{insulinAdjustmmentVariety,jdbcType=VARCHAR}, #{insulinAdjustmmentDirections,jdbcType=VARCHAR}, 
+      #{transferReason,jdbcType=VARCHAR}, #{transferOrg,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, 
+      #{contractTel,jdbcType=VARCHAR}, #{transferResult,jdbcType=VARCHAR}, #{contractImpression,jdbcType=VARCHAR}, 
+      #{contractJws,jdbcType=VARCHAR}, #{contractCure,jdbcType=VARCHAR}, #{nextDate,jdbcType=DATE}, 
+      #{juminName,jdbcType=VARCHAR}, #{juminNameUrl,jdbcType=VARCHAR}, #{jkzd,jdbcType=VARCHAR}, 
+      #{isStandard,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{lostDate,jdbcType=TIMESTAMP}, 
+      #{lostReason,jdbcType=VARCHAR}, #{deathDate,jdbcType=DATE}, #{deathReason,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{gwSfId,jdbcType=VARCHAR}, 
+      #{gwSfDah,jdbcType=VARCHAR}, #{gwDaStatus,jdbcType=VARCHAR}, #{gwDaMsg,jdbcType=VARCHAR}, 
+      #{gwUpFlag,jdbcType=VARCHAR}, #{gwUpMsg,jdbcType=VARCHAR}, #{gwUpCreateTime,jdbcType=TIMESTAMP}, 
+      #{gwUpUpdateTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{field,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.MbFolDiaBean" >
+    insert into mb_fol_diabetes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="origin != null" >
+        origin,
+      </if>
+      <if test="folUrl1 != null" >
+        fol_url1,
+      </if>
+      <if test="folUrl2 != null" >
+        fol_url2,
+      </if>
+      <if test="wpzyy != null" >
+        wpzyy,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="ehrId != null" >
+        ehr_id,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="doctorName != null" >
+        doctor_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="followUpStyle != null" >
+        follow_up_style,
+      </if>
+      <if test="followUpDate != null" >
+        follow_up_date,
+      </if>
+      <if test="symptom != null" >
+        symptom,
+      </if>
+      <if test="symptomOther != null" >
+        symptom_other,
+      </if>
+      <if test="highPressure != null" >
+        high_pressure,
+      </if>
+      <if test="lowPressure != null" >
+        low_pressure,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="weightExp != null" >
+        weight_exp,
+      </if>
+      <if test="bmi != null" >
+        bmi,
+      </if>
+      <if test="bmiExp != null" >
+        bmi_exp,
+      </if>
+      <if test="heartRate != null" >
+        heart_rate,
+      </if>
+      <if test="footPulstates != null" >
+        foot_pulstates,
+      </if>
+      <if test="footPilstatesWhere != null" >
+        foot_pilstates_where,
+      </if>
+      <if test="signOther != null" >
+        sign_other,
+      </if>
+      <if test="countCigarette != null" >
+        count_cigarette,
+      </if>
+      <if test="countCigaretteExp != null" >
+        count_cigarette_exp,
+      </if>
+      <if test="countWine != null" >
+        count_wine,
+      </if>
+      <if test="countWineExp != null" >
+        count_wine_exp,
+      </if>
+      <if test="exercise != null" >
+        exercise,
+      </if>
+      <if test="frequency != null" >
+        frequency,
+      </if>
+      <if test="exerciseExp != null" >
+        exercise_exp,
+      </if>
+      <if test="frequencyExp != null" >
+        frequency_exp,
+      </if>
+      <if test="stapleFood != null" >
+        staple_food,
+      </if>
+      <if test="stableFoodExp != null" >
+        stable_food_exp,
+      </if>
+      <if test="psyRecovery != null" >
+        psy_recovery,
+      </if>
+      <if test="treatmentCompliance != null" >
+        treatment_compliance,
+      </if>
+      <if test="glu != null" >
+        glu,
+      </if>
+      <if test="ghb != null" >
+        GHb,
+      </if>
+      <if test="ghbDate != null" >
+        GHb_date,
+      </if>
+      <if test="ghbOther != null" >
+        GHb_other,
+      </if>
+      <if test="chXt != null" >
+        ch_xt,
+      </if>
+      <if test="sjXt != null" >
+        sj_xt,
+      </if>
+      <if test="insulinVariety != null" >
+        insulin_variety,
+      </if>
+      <if test="insulinDirections != null" >
+        insulin_directions,
+      </if>
+      <if test="medication != null" >
+        medication,
+      </if>
+      <if test="medicationExp != null" >
+        medication_exp,
+      </if>
+      <if test="medicationCompliance != null" >
+        medication_compliance,
+      </if>
+      <if test="adverceReactionCode != null" >
+        adverce_reaction_code,
+      </if>
+      <if test="adverceReactionDetail != null" >
+        adverce_reaction_detail,
+      </if>
+      <if test="hypoglycemiaReaction != null" >
+        hypoglycemia_reaction,
+      </if>
+      <if test="classifyFollowUp != null" >
+        classify_follow_up,
+      </if>
+      <if test="classifyFollowUp1 != null" >
+        classify_follow_up1,
+      </if>
+      <if test="managementNextStep != null" >
+        management_next_step,
+      </if>
+      <if test="insulinAdjustmmentVariety != null" >
+        insulin_adjustmment_variety,
+      </if>
+      <if test="insulinAdjustmmentDirections != null" >
+        insulin_adjustmment_directions,
+      </if>
+      <if test="transferReason != null" >
+        transfer_reason,
+      </if>
+      <if test="transferOrg != null" >
+        transfer_org,
+      </if>
+      <if test="contractName != null" >
+        contract_name,
+      </if>
+      <if test="contractTel != null" >
+        contract_tel,
+      </if>
+      <if test="transferResult != null" >
+        transfer_result,
+      </if>
+      <if test="contractImpression != null" >
+        contract_impression,
+      </if>
+      <if test="contractJws != null" >
+        contract_jws,
+      </if>
+      <if test="contractCure != null" >
+        contract_cure,
+      </if>
+      <if test="nextDate != null" >
+        next_date,
+      </if>
+      <if test="juminName != null" >
+        jumin_name,
+      </if>
+      <if test="juminNameUrl != null" >
+        jumin_name_url,
+      </if>
+      <if test="jkzd != null" >
+        jkzd,
+      </if>
+      <if test="isStandard != null" >
+        is_standard,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="lostDate != null" >
+        lost_date,
+      </if>
+      <if test="lostReason != null" >
+        lost_reason,
+      </if>
+      <if test="deathDate != null" >
+        death_date,
+      </if>
+      <if test="deathReason != null" >
+        death_reason,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="gwSfId != null" >
+        gw_sf_id,
+      </if>
+      <if test="gwSfDah != null" >
+        gw_sf_dah,
+      </if>
+      <if test="gwDaStatus != null" >
+        gw_da_status,
+      </if>
+      <if test="gwDaMsg != null" >
+        gw_da_msg,
+      </if>
+      <if test="gwUpFlag != null" >
+        gw_up_flag,
+      </if>
+      <if test="gwUpMsg != null" >
+        gw_up_msg,
+      </if>
+      <if test="gwUpCreateTime != null" >
+        gw_up_create_time,
+      </if>
+      <if test="gwUpUpdateTime != null" >
+        gw_up_update_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="field != null" >
+        field,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null" >
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="folUrl1 != null" >
+        #{folUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="folUrl2 != null" >
+        #{folUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="wpzyy != null" >
+        #{wpzyy,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="ehrId != null" >
+        #{ehrId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null" >
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="followUpStyle != null" >
+        #{followUpStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="followUpDate != null" >
+        #{followUpDate,jdbcType=DATE},
+      </if>
+      <if test="symptom != null" >
+        #{symptom,jdbcType=VARCHAR},
+      </if>
+      <if test="symptomOther != null" >
+        #{symptomOther,jdbcType=VARCHAR},
+      </if>
+      <if test="highPressure != null" >
+        #{highPressure,jdbcType=INTEGER},
+      </if>
+      <if test="lowPressure != null" >
+        #{lowPressure,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="weightExp != null" >
+        #{weightExp,jdbcType=DOUBLE},
+      </if>
+      <if test="bmi != null" >
+        #{bmi,jdbcType=DOUBLE},
+      </if>
+      <if test="bmiExp != null" >
+        #{bmiExp,jdbcType=DOUBLE},
+      </if>
+      <if test="heartRate != null" >
+        #{heartRate,jdbcType=INTEGER},
+      </if>
+      <if test="footPulstates != null" >
+        #{footPulstates,jdbcType=VARCHAR},
+      </if>
+      <if test="footPilstatesWhere != null" >
+        #{footPilstatesWhere,jdbcType=VARCHAR},
+      </if>
+      <if test="signOther != null" >
+        #{signOther,jdbcType=VARCHAR},
+      </if>
+      <if test="countCigarette != null" >
+        #{countCigarette,jdbcType=VARCHAR},
+      </if>
+      <if test="countCigaretteExp != null" >
+        #{countCigaretteExp,jdbcType=VARCHAR},
+      </if>
+      <if test="countWine != null" >
+        #{countWine,jdbcType=VARCHAR},
+      </if>
+      <if test="countWineExp != null" >
+        #{countWineExp,jdbcType=VARCHAR},
+      </if>
+      <if test="exercise != null" >
+        #{exercise,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null" >
+        #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="exerciseExp != null" >
+        #{exerciseExp,jdbcType=VARCHAR},
+      </if>
+      <if test="frequencyExp != null" >
+        #{frequencyExp,jdbcType=VARCHAR},
+      </if>
+      <if test="stapleFood != null" >
+        #{stapleFood,jdbcType=VARCHAR},
+      </if>
+      <if test="stableFoodExp != null" >
+        #{stableFoodExp,jdbcType=VARCHAR},
+      </if>
+      <if test="psyRecovery != null" >
+        #{psyRecovery,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentCompliance != null" >
+        #{treatmentCompliance,jdbcType=VARCHAR},
+      </if>
+      <if test="glu != null" >
+        #{glu,jdbcType=DOUBLE},
+      </if>
+      <if test="ghb != null" >
+        #{ghb,jdbcType=DOUBLE},
+      </if>
+      <if test="ghbDate != null" >
+        #{ghbDate,jdbcType=DATE},
+      </if>
+      <if test="ghbOther != null" >
+        #{ghbOther,jdbcType=VARCHAR},
+      </if>
+      <if test="chXt != null" >
+        #{chXt,jdbcType=VARCHAR},
+      </if>
+      <if test="sjXt != null" >
+        #{sjXt,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinVariety != null" >
+        #{insulinVariety,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinDirections != null" >
+        #{insulinDirections,jdbcType=VARCHAR},
+      </if>
+      <if test="medication != null" >
+        #{medication,jdbcType=OTHER},
+      </if>
+      <if test="medicationExp != null" >
+        #{medicationExp,jdbcType=OTHER},
+      </if>
+      <if test="medicationCompliance != null" >
+        #{medicationCompliance,jdbcType=VARCHAR},
+      </if>
+      <if test="adverceReactionCode != null" >
+        #{adverceReactionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adverceReactionDetail != null" >
+        #{adverceReactionDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="hypoglycemiaReaction != null" >
+        #{hypoglycemiaReaction,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyFollowUp != null" >
+        #{classifyFollowUp,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyFollowUp1 != null" >
+        #{classifyFollowUp1,jdbcType=VARCHAR},
+      </if>
+      <if test="managementNextStep != null" >
+        #{managementNextStep,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinAdjustmmentVariety != null" >
+        #{insulinAdjustmmentVariety,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinAdjustmmentDirections != null" >
+        #{insulinAdjustmmentDirections,jdbcType=VARCHAR},
+      </if>
+      <if test="transferReason != null" >
+        #{transferReason,jdbcType=VARCHAR},
+      </if>
+      <if test="transferOrg != null" >
+        #{transferOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null" >
+        #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractTel != null" >
+        #{contractTel,jdbcType=VARCHAR},
+      </if>
+      <if test="transferResult != null" >
+        #{transferResult,jdbcType=VARCHAR},
+      </if>
+      <if test="contractImpression != null" >
+        #{contractImpression,jdbcType=VARCHAR},
+      </if>
+      <if test="contractJws != null" >
+        #{contractJws,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCure != null" >
+        #{contractCure,jdbcType=VARCHAR},
+      </if>
+      <if test="nextDate != null" >
+        #{nextDate,jdbcType=DATE},
+      </if>
+      <if test="juminName != null" >
+        #{juminName,jdbcType=VARCHAR},
+      </if>
+      <if test="juminNameUrl != null" >
+        #{juminNameUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="jkzd != null" >
+        #{jkzd,jdbcType=VARCHAR},
+      </if>
+      <if test="isStandard != null" >
+        #{isStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="lostDate != null" >
+        #{lostDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lostReason != null" >
+        #{lostReason,jdbcType=VARCHAR},
+      </if>
+      <if test="deathDate != null" >
+        #{deathDate,jdbcType=DATE},
+      </if>
+      <if test="deathReason != null" >
+        #{deathReason,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gwSfId != null" >
+        #{gwSfId,jdbcType=VARCHAR},
+      </if>
+      <if test="gwSfDah != null" >
+        #{gwSfDah,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDaStatus != null" >
+        #{gwDaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDaMsg != null" >
+        #{gwDaMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpFlag != null" >
+        #{gwUpFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpMsg != null" >
+        #{gwUpMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpCreateTime != null" >
+        #{gwUpCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gwUpUpdateTime != null" >
+        #{gwUpUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="field != null" >
+        #{field,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.MbFolDiaBean" >
+    update mb_fol_diabetes
+    <set >
+      <if test="origin != null" >
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="folUrl1 != null" >
+        fol_url1 = #{folUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="folUrl2 != null" >
+        fol_url2 = #{folUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="wpzyy != null" >
+        wpzyy = #{wpzyy,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="ehrId != null" >
+        ehr_id = #{ehrId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorName != null" >
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="followUpStyle != null" >
+        follow_up_style = #{followUpStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="followUpDate != null" >
+        follow_up_date = #{followUpDate,jdbcType=DATE},
+      </if>
+      <if test="symptom != null" >
+        symptom = #{symptom,jdbcType=VARCHAR},
+      </if>
+      <if test="symptomOther != null" >
+        symptom_other = #{symptomOther,jdbcType=VARCHAR},
+      </if>
+      <if test="highPressure != null" >
+        high_pressure = #{highPressure,jdbcType=INTEGER},
+      </if>
+      <if test="lowPressure != null" >
+        low_pressure = #{lowPressure,jdbcType=INTEGER},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="weightExp != null" >
+        weight_exp = #{weightExp,jdbcType=DOUBLE},
+      </if>
+      <if test="bmi != null" >
+        bmi = #{bmi,jdbcType=DOUBLE},
+      </if>
+      <if test="bmiExp != null" >
+        bmi_exp = #{bmiExp,jdbcType=DOUBLE},
+      </if>
+      <if test="heartRate != null" >
+        heart_rate = #{heartRate,jdbcType=INTEGER},
+      </if>
+      <if test="footPulstates != null" >
+        foot_pulstates = #{footPulstates,jdbcType=VARCHAR},
+      </if>
+      <if test="footPilstatesWhere != null" >
+        foot_pilstates_where = #{footPilstatesWhere,jdbcType=VARCHAR},
+      </if>
+      <if test="signOther != null" >
+        sign_other = #{signOther,jdbcType=VARCHAR},
+      </if>
+      <if test="countCigarette != null" >
+        count_cigarette = #{countCigarette,jdbcType=VARCHAR},
+      </if>
+      <if test="countCigaretteExp != null" >
+        count_cigarette_exp = #{countCigaretteExp,jdbcType=VARCHAR},
+      </if>
+      <if test="countWine != null" >
+        count_wine = #{countWine,jdbcType=VARCHAR},
+      </if>
+      <if test="countWineExp != null" >
+        count_wine_exp = #{countWineExp,jdbcType=VARCHAR},
+      </if>
+      <if test="exercise != null" >
+        exercise = #{exercise,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null" >
+        frequency = #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="exerciseExp != null" >
+        exercise_exp = #{exerciseExp,jdbcType=VARCHAR},
+      </if>
+      <if test="frequencyExp != null" >
+        frequency_exp = #{frequencyExp,jdbcType=VARCHAR},
+      </if>
+      <if test="stapleFood != null" >
+        staple_food = #{stapleFood,jdbcType=VARCHAR},
+      </if>
+      <if test="stableFoodExp != null" >
+        stable_food_exp = #{stableFoodExp,jdbcType=VARCHAR},
+      </if>
+      <if test="psyRecovery != null" >
+        psy_recovery = #{psyRecovery,jdbcType=VARCHAR},
+      </if>
+      <if test="treatmentCompliance != null" >
+        treatment_compliance = #{treatmentCompliance,jdbcType=VARCHAR},
+      </if>
+      <if test="glu != null" >
+        glu = #{glu,jdbcType=DOUBLE},
+      </if>
+      <if test="ghb != null" >
+        GHb = #{ghb,jdbcType=DOUBLE},
+      </if>
+      <if test="ghbDate != null" >
+        GHb_date = #{ghbDate,jdbcType=DATE},
+      </if>
+      <if test="ghbOther != null" >
+        GHb_other = #{ghbOther,jdbcType=VARCHAR},
+      </if>
+      <if test="chXt != null" >
+        ch_xt = #{chXt,jdbcType=VARCHAR},
+      </if>
+      <if test="sjXt != null" >
+        sj_xt = #{sjXt,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinVariety != null" >
+        insulin_variety = #{insulinVariety,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinDirections != null" >
+        insulin_directions = #{insulinDirections,jdbcType=VARCHAR},
+      </if>
+      <if test="medication != null" >
+        medication = #{medication,jdbcType=OTHER},
+      </if>
+      <if test="medicationExp != null" >
+        medication_exp = #{medicationExp,jdbcType=OTHER},
+      </if>
+      <if test="medicationCompliance != null" >
+        medication_compliance = #{medicationCompliance,jdbcType=VARCHAR},
+      </if>
+      <if test="adverceReactionCode != null" >
+        adverce_reaction_code = #{adverceReactionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adverceReactionDetail != null" >
+        adverce_reaction_detail = #{adverceReactionDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="hypoglycemiaReaction != null" >
+        hypoglycemia_reaction = #{hypoglycemiaReaction,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyFollowUp != null" >
+        classify_follow_up = #{classifyFollowUp,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyFollowUp1 != null" >
+        classify_follow_up1 = #{classifyFollowUp1,jdbcType=VARCHAR},
+      </if>
+      <if test="managementNextStep != null" >
+        management_next_step = #{managementNextStep,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinAdjustmmentVariety != null" >
+        insulin_adjustmment_variety = #{insulinAdjustmmentVariety,jdbcType=VARCHAR},
+      </if>
+      <if test="insulinAdjustmmentDirections != null" >
+        insulin_adjustmment_directions = #{insulinAdjustmmentDirections,jdbcType=VARCHAR},
+      </if>
+      <if test="transferReason != null" >
+        transfer_reason = #{transferReason,jdbcType=VARCHAR},
+      </if>
+      <if test="transferOrg != null" >
+        transfer_org = #{transferOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null" >
+        contract_name = #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractTel != null" >
+        contract_tel = #{contractTel,jdbcType=VARCHAR},
+      </if>
+      <if test="transferResult != null" >
+        transfer_result = #{transferResult,jdbcType=VARCHAR},
+      </if>
+      <if test="contractImpression != null" >
+        contract_impression = #{contractImpression,jdbcType=VARCHAR},
+      </if>
+      <if test="contractJws != null" >
+        contract_jws = #{contractJws,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCure != null" >
+        contract_cure = #{contractCure,jdbcType=VARCHAR},
+      </if>
+      <if test="nextDate != null" >
+        next_date = #{nextDate,jdbcType=DATE},
+      </if>
+      <if test="juminName != null" >
+        jumin_name = #{juminName,jdbcType=VARCHAR},
+      </if>
+      <if test="juminNameUrl != null" >
+        jumin_name_url = #{juminNameUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="jkzd != null" >
+        jkzd = #{jkzd,jdbcType=VARCHAR},
+      </if>
+      <if test="isStandard != null" >
+        is_standard = #{isStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="lostDate != null" >
+        lost_date = #{lostDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lostReason != null" >
+        lost_reason = #{lostReason,jdbcType=VARCHAR},
+      </if>
+      <if test="deathDate != null" >
+        death_date = #{deathDate,jdbcType=DATE},
+      </if>
+      <if test="deathReason != null" >
+        death_reason = #{deathReason,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gwSfId != null" >
+        gw_sf_id = #{gwSfId,jdbcType=VARCHAR},
+      </if>
+      <if test="gwSfDah != null" >
+        gw_sf_dah = #{gwSfDah,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDaStatus != null" >
+        gw_da_status = #{gwDaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gwDaMsg != null" >
+        gw_da_msg = #{gwDaMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpFlag != null" >
+        gw_up_flag = #{gwUpFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpMsg != null" >
+        gw_up_msg = #{gwUpMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUpCreateTime != null" >
+        gw_up_create_time = #{gwUpCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gwUpUpdateTime != null" >
+        gw_up_update_time = #{gwUpUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="field != null" >
+        field = #{field,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.MbFolDiaBean" >
+    update mb_fol_diabetes
+    set origin = #{origin,jdbcType=VARCHAR},
+      fol_url1 = #{folUrl1,jdbcType=VARCHAR},
+      fol_url2 = #{folUrl2,jdbcType=VARCHAR},
+      wpzyy = #{wpzyy,jdbcType=VARCHAR},
+      card_id = #{cardId,jdbcType=VARCHAR},
+      ehr_id = #{ehrId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      doctor_name = #{doctorName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      follow_up_style = #{followUpStyle,jdbcType=VARCHAR},
+      follow_up_date = #{followUpDate,jdbcType=DATE},
+      symptom = #{symptom,jdbcType=VARCHAR},
+      symptom_other = #{symptomOther,jdbcType=VARCHAR},
+      high_pressure = #{highPressure,jdbcType=INTEGER},
+      low_pressure = #{lowPressure,jdbcType=INTEGER},
+      height = #{height,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      weight_exp = #{weightExp,jdbcType=DOUBLE},
+      bmi = #{bmi,jdbcType=DOUBLE},
+      bmi_exp = #{bmiExp,jdbcType=DOUBLE},
+      heart_rate = #{heartRate,jdbcType=INTEGER},
+      foot_pulstates = #{footPulstates,jdbcType=VARCHAR},
+      foot_pilstates_where = #{footPilstatesWhere,jdbcType=VARCHAR},
+      sign_other = #{signOther,jdbcType=VARCHAR},
+      count_cigarette = #{countCigarette,jdbcType=VARCHAR},
+      count_cigarette_exp = #{countCigaretteExp,jdbcType=VARCHAR},
+      count_wine = #{countWine,jdbcType=VARCHAR},
+      count_wine_exp = #{countWineExp,jdbcType=VARCHAR},
+      exercise = #{exercise,jdbcType=VARCHAR},
+      frequency = #{frequency,jdbcType=VARCHAR},
+      exercise_exp = #{exerciseExp,jdbcType=VARCHAR},
+      frequency_exp = #{frequencyExp,jdbcType=VARCHAR},
+      staple_food = #{stapleFood,jdbcType=VARCHAR},
+      stable_food_exp = #{stableFoodExp,jdbcType=VARCHAR},
+      psy_recovery = #{psyRecovery,jdbcType=VARCHAR},
+      treatment_compliance = #{treatmentCompliance,jdbcType=VARCHAR},
+      glu = #{glu,jdbcType=DOUBLE},
+      GHb = #{ghb,jdbcType=DOUBLE},
+      GHb_date = #{ghbDate,jdbcType=DATE},
+      GHb_other = #{ghbOther,jdbcType=VARCHAR},
+      ch_xt = #{chXt,jdbcType=VARCHAR},
+      sj_xt = #{sjXt,jdbcType=VARCHAR},
+      insulin_variety = #{insulinVariety,jdbcType=VARCHAR},
+      insulin_directions = #{insulinDirections,jdbcType=VARCHAR},
+      medication = #{medication,jdbcType=OTHER},
+      medication_exp = #{medicationExp,jdbcType=OTHER},
+      medication_compliance = #{medicationCompliance,jdbcType=VARCHAR},
+      adverce_reaction_code = #{adverceReactionCode,jdbcType=VARCHAR},
+      adverce_reaction_detail = #{adverceReactionDetail,jdbcType=VARCHAR},
+      hypoglycemia_reaction = #{hypoglycemiaReaction,jdbcType=VARCHAR},
+      classify_follow_up = #{classifyFollowUp,jdbcType=VARCHAR},
+      classify_follow_up1 = #{classifyFollowUp1,jdbcType=VARCHAR},
+      management_next_step = #{managementNextStep,jdbcType=VARCHAR},
+      insulin_adjustmment_variety = #{insulinAdjustmmentVariety,jdbcType=VARCHAR},
+      insulin_adjustmment_directions = #{insulinAdjustmmentDirections,jdbcType=VARCHAR},
+      transfer_reason = #{transferReason,jdbcType=VARCHAR},
+      transfer_org = #{transferOrg,jdbcType=VARCHAR},
+      contract_name = #{contractName,jdbcType=VARCHAR},
+      contract_tel = #{contractTel,jdbcType=VARCHAR},
+      transfer_result = #{transferResult,jdbcType=VARCHAR},
+      contract_impression = #{contractImpression,jdbcType=VARCHAR},
+      contract_jws = #{contractJws,jdbcType=VARCHAR},
+      contract_cure = #{contractCure,jdbcType=VARCHAR},
+      next_date = #{nextDate,jdbcType=DATE},
+      jumin_name = #{juminName,jdbcType=VARCHAR},
+      jumin_name_url = #{juminNameUrl,jdbcType=VARCHAR},
+      jkzd = #{jkzd,jdbcType=VARCHAR},
+      is_standard = #{isStandard,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      lost_date = #{lostDate,jdbcType=TIMESTAMP},
+      lost_reason = #{lostReason,jdbcType=VARCHAR},
+      death_date = #{deathDate,jdbcType=DATE},
+      death_reason = #{deathReason,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      gw_sf_id = #{gwSfId,jdbcType=VARCHAR},
+      gw_sf_dah = #{gwSfDah,jdbcType=VARCHAR},
+      gw_da_status = #{gwDaStatus,jdbcType=VARCHAR},
+      gw_da_msg = #{gwDaMsg,jdbcType=VARCHAR},
+      gw_up_flag = #{gwUpFlag,jdbcType=VARCHAR},
+      gw_up_msg = #{gwUpMsg,jdbcType=VARCHAR},
+      gw_up_create_time = #{gwUpCreateTime,jdbcType=TIMESTAMP},
+      gw_up_update_time = #{gwUpUpdateTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      field = #{field,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ky.common.dao.OrgBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.ky.common.bean.OrgBean" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="yy_code" property="yyCode" jdbcType="VARCHAR" />
+    <result column="zl_server_address" property="zlServerAddress" jdbcType="VARCHAR" />
+    <result column="zl_user" property="zlUser" jdbcType="VARCHAR" />
+    <result column="zl_passwd" property="zlPasswd" jdbcType="VARCHAR" />
+    <result column="xqrk" property="xqrk" jdbcType="INTEGER" />
+    <result column="yy_address" property="yyAddress" jdbcType="VARCHAR" />
+    <result column="gw_url" property="gwUrl" jdbcType="VARCHAR" />
+    <result column="gw_account" property="gwAccount" jdbcType="VARCHAR" />
+    <result column="gw_password" property="gwPassword" jdbcType="VARCHAR" />
+    <result column="zrys" property="zrys" jdbcType="VARCHAR" />
+    <result column="enable_flag" property="enableFlag" jdbcType="BIT" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_uid" property="createUid" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="update_uid" property="updateUid" jdbcType="VARCHAR" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, level, parent_id, yy_code, zl_server_address, zl_user, zl_passwd, xqrk, 
+    yy_address, gw_url, gw_account, gw_password, zrys, enable_flag, delete_flag, create_time, 
+    update_time, create_uid, create_name, update_uid, update_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from com_organization
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from com_organization
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ky.common.bean.OrgBean" >
+    insert into com_organization (id, name, level, 
+      parent_id, yy_code, zl_server_address, 
+      zl_user, zl_passwd, xqrk, 
+      yy_address, gw_url, gw_account, 
+      gw_password, zrys, enable_flag, 
+      delete_flag, create_time, update_time, 
+      create_uid, create_name, update_uid, 
+      update_name)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=VARCHAR}, #{yyCode,jdbcType=VARCHAR}, #{zlServerAddress,jdbcType=VARCHAR}, 
+      #{zlUser,jdbcType=VARCHAR}, #{zlPasswd,jdbcType=VARCHAR}, #{xqrk,jdbcType=INTEGER}, 
+      #{yyAddress,jdbcType=VARCHAR}, #{gwUrl,jdbcType=VARCHAR}, #{gwAccount,jdbcType=VARCHAR}, 
+      #{gwPassword,jdbcType=VARCHAR}, #{zrys,jdbcType=VARCHAR}, #{enableFlag,jdbcType=BIT}, 
+      #{deleteFlag,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createUid,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{updateUid,jdbcType=VARCHAR}, 
+      #{updateName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ky.common.bean.OrgBean" >
+    insert into com_organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="yyCode != null" >
+        yy_code,
+      </if>
+      <if test="zlServerAddress != null" >
+        zl_server_address,
+      </if>
+      <if test="zlUser != null" >
+        zl_user,
+      </if>
+      <if test="zlPasswd != null" >
+        zl_passwd,
+      </if>
+      <if test="xqrk != null" >
+        xqrk,
+      </if>
+      <if test="yyAddress != null" >
+        yy_address,
+      </if>
+      <if test="gwUrl != null" >
+        gw_url,
+      </if>
+      <if test="gwAccount != null" >
+        gw_account,
+      </if>
+      <if test="gwPassword != null" >
+        gw_password,
+      </if>
+      <if test="zrys != null" >
+        zrys,
+      </if>
+      <if test="enableFlag != null" >
+        enable_flag,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createUid != null" >
+        create_uid,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="updateUid != null" >
+        update_uid,
+      </if>
+      <if test="updateName != null" >
+        update_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="yyCode != null" >
+        #{yyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zlServerAddress != null" >
+        #{zlServerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUser != null" >
+        #{zlUser,jdbcType=VARCHAR},
+      </if>
+      <if test="zlPasswd != null" >
+        #{zlPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="xqrk != null" >
+        #{xqrk,jdbcType=INTEGER},
+      </if>
+      <if test="yyAddress != null" >
+        #{yyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUrl != null" >
+        #{gwUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gwAccount != null" >
+        #{gwAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="gwPassword != null" >
+        #{gwPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="zrys != null" >
+        #{zrys,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null" >
+        #{enableFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null" >
+        #{createUid,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUid != null" >
+        #{updateUid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null" >
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ky.common.bean.OrgBean" >
+    update com_organization
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="yyCode != null" >
+        yy_code = #{yyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zlServerAddress != null" >
+        zl_server_address = #{zlServerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUser != null" >
+        zl_user = #{zlUser,jdbcType=VARCHAR},
+      </if>
+      <if test="zlPasswd != null" >
+        zl_passwd = #{zlPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="xqrk != null" >
+        xqrk = #{xqrk,jdbcType=INTEGER},
+      </if>
+      <if test="yyAddress != null" >
+        yy_address = #{yyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gwUrl != null" >
+        gw_url = #{gwUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gwAccount != null" >
+        gw_account = #{gwAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="gwPassword != null" >
+        gw_password = #{gwPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="zrys != null" >
+        zrys = #{zrys,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null" >
+        enable_flag = #{enableFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUid != null" >
+        create_uid = #{createUid,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUid != null" >
+        update_uid = #{updateUid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateName != null" >
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ky.common.bean.OrgBean" >
+    update com_organization
+    set name = #{name,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      yy_code = #{yyCode,jdbcType=VARCHAR},
+      zl_server_address = #{zlServerAddress,jdbcType=VARCHAR},
+      zl_user = #{zlUser,jdbcType=VARCHAR},
+      zl_passwd = #{zlPasswd,jdbcType=VARCHAR},
+      xqrk = #{xqrk,jdbcType=INTEGER},
+      yy_address = #{yyAddress,jdbcType=VARCHAR},
+      gw_url = #{gwUrl,jdbcType=VARCHAR},
+      gw_account = #{gwAccount,jdbcType=VARCHAR},
+      gw_password = #{gwPassword,jdbcType=VARCHAR},
+      zrys = #{zrys,jdbcType=VARCHAR},
+      enable_flag = #{enableFlag,jdbcType=BIT},
+      delete_flag = #{deleteFlag,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_uid = #{createUid,jdbcType=VARCHAR},
+      create_name = #{createName,jdbcType=VARCHAR},
+      update_uid = #{updateUid,jdbcType=VARCHAR},
+      update_name = #{updateName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
