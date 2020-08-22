@@ -105,6 +105,12 @@ public class MbFolHypBean {
 
     private String transferResult;
 
+    private String contractImpression;
+
+    private String contractJws;
+
+    private String contractCure;
+
     private Date nextDate;
 
     private String juminName;
@@ -561,6 +567,30 @@ public class MbFolHypBean {
 
     public void setTransferResult(String transferResult) {
         this.transferResult = transferResult == null ? null : transferResult.trim();
+    }
+
+    public String getContractImpression() {
+        return contractImpression;
+    }
+
+    public void setContractImpression(String contractImpression) {
+        this.contractImpression = contractImpression == null ? null : contractImpression.trim();
+    }
+
+    public String getContractJws() {
+        return contractJws;
+    }
+
+    public void setContractJws(String contractJws) {
+        this.contractJws = contractJws == null ? null : contractJws.trim();
+    }
+
+    public String getContractCure() {
+        return contractCure;
+    }
+
+    public void setContractCure(String contractCure) {
+        this.contractCure = contractCure == null ? null : contractCure.trim();
     }
 
     public Date getNextDate() {

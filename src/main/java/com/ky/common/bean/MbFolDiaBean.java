@@ -89,6 +89,10 @@ public class MbFolDiaBean {
 
     private String ghbOther;
 
+    private String chXt;
+
+    private String sjXt;
+
     private String insulinVariety;
 
     private String insulinDirections;
@@ -124,6 +128,12 @@ public class MbFolDiaBean {
     private String contractTel;
 
     private String transferResult;
+
+    private String contractImpression;
+
+    private String contractJws;
+
+    private String contractCure;
 
     private Date nextDate;
 
@@ -519,6 +529,22 @@ public class MbFolDiaBean {
         this.ghbOther = ghbOther == null ? null : ghbOther.trim();
     }
 
+    public String getChXt() {
+        return chXt;
+    }
+
+    public void setChXt(String chXt) {
+        this.chXt = chXt == null ? null : chXt.trim();
+    }
+
+    public String getSjXt() {
+        return sjXt;
+    }
+
+    public void setSjXt(String sjXt) {
+        this.sjXt = sjXt == null ? null : sjXt.trim();
+    }
+
     public String getInsulinVariety() {
         return insulinVariety;
     }
@@ -661,6 +687,30 @@ public class MbFolDiaBean {
 
     public void setTransferResult(String transferResult) {
         this.transferResult = transferResult == null ? null : transferResult.trim();
+    }
+
+    public String getContractImpression() {
+        return contractImpression;
+    }
+
+    public void setContractImpression(String contractImpression) {
+        this.contractImpression = contractImpression == null ? null : contractImpression.trim();
+    }
+
+    public String getContractJws() {
+        return contractJws;
+    }
+
+    public void setContractJws(String contractJws) {
+        this.contractJws = contractJws == null ? null : contractJws.trim();
+    }
+
+    public String getContractCure() {
+        return contractCure;
+    }
+
+    public void setContractCure(String contractCure) {
+        this.contractCure = contractCure == null ? null : contractCure.trim();
     }
 
     public Date getNextDate() {

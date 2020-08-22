@@ -53,6 +53,9 @@
         <result column="contract_name" property="contractName" jdbcType="VARCHAR"/>
         <result column="contract_tel" property="contractTel" jdbcType="VARCHAR"/>
         <result column="transfer_result" property="transferResult" jdbcType="VARCHAR"/>
+        <result column="contract_impression" property="contractImpression" jdbcType="VARCHAR"/>
+        <result column="contract_jws" property="contractJws" jdbcType="VARCHAR"/>
+        <result column="contract_cure" property="contractCure" jdbcType="VARCHAR"/>
         <result column="next_date" property="nextDate" jdbcType="DATE"/>
         <result column="jumin_name" property="juminName" jdbcType="VARCHAR"/>
         <result column="jumin_name_url" property="juminNameUrl" jdbcType="VARCHAR"/>
@@ -87,11 +90,11 @@
     frequency_exp, salt_situation, salt_situation_exp, psy_recovery, treatment_compliance, 
     other_check, medication, medication_exp, medication_compliance, adverce_reaction_code, 
     adverce_reaction_detail, classify_follow_up, classify_follow_up1, management_next_step, 
-    transfer_reason, transfer_org, contract_name, contract_tel, transfer_result, next_date, 
-    jumin_name, jumin_name_url, is_standard, jkzd, remarks, longitude, latitude, location, 
-    lost_date, lost_reason, death_date, death_reason, status, create_time, gw_sf_id, 
-    gw_sf_dah, gw_da_status, gw_da_msg, gw_up_flag, gw_up_msg, gw_up_create_time, gw_up_update_time, 
-    update_time, field
+    transfer_reason, transfer_org, contract_name, contract_tel, transfer_result, contract_impression, 
+    contract_jws, contract_cure, next_date, jumin_name, jumin_name_url, is_standard, 
+    jkzd, remarks, longitude, latitude, location, lost_date, lost_reason, death_date, 
+    death_reason, status, create_time, gw_sf_id, gw_sf_dah, gw_da_status, gw_da_msg, 
+    gw_up_flag, gw_up_msg, gw_up_create_time, gw_up_update_time, update_time, field
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -99,12 +102,14 @@
         from mb_fol_hypertension
         where id = #{id,jdbcType=VARCHAR}
     </select>
+
     <!--通过ehr_id 查随访-->
     <select id="getHyperListByEhrId" resultMap="BaseResultMap">
         select * from mb_fol_hypertension where
         and ehr_id = #{ehrId,jdbcType=VARCHAR}
         order by follow_up_date asc ;
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from mb_fol_hypertension
     where id = #{id,jdbcType=VARCHAR}
@@ -127,7 +132,8 @@
       adverce_reaction_detail, classify_follow_up, 
       classify_follow_up1, management_next_step, 
       transfer_reason, transfer_org, contract_name, 
-      contract_tel, transfer_result, next_date, 
+      contract_tel, transfer_result, contract_impression, 
+      contract_jws, contract_cure, next_date, 
       jumin_name, jumin_name_url, is_standard, 
       jkzd, remarks, longitude, 
       latitude, location, lost_date, 
@@ -154,7 +160,8 @@
       #{adverceReactionDetail,jdbcType=VARCHAR}, #{classifyFollowUp,jdbcType=VARCHAR}, 
       #{classifyFollowUp1,jdbcType=VARCHAR}, #{managementNextStep,jdbcType=VARCHAR}, 
       #{transferReason,jdbcType=VARCHAR}, #{transferOrg,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, 
-      #{contractTel,jdbcType=VARCHAR}, #{transferResult,jdbcType=VARCHAR}, #{nextDate,jdbcType=DATE}, 
+      #{contractTel,jdbcType=VARCHAR}, #{transferResult,jdbcType=VARCHAR}, #{contractImpression,jdbcType=VARCHAR}, 
+      #{contractJws,jdbcType=VARCHAR}, #{contractCure,jdbcType=VARCHAR}, #{nextDate,jdbcType=DATE}, 
       #{juminName,jdbcType=VARCHAR}, #{juminNameUrl,jdbcType=VARCHAR}, #{isStandard,jdbcType=VARCHAR}, 
       #{jkzd,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
       #{latitude,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{lostDate,jdbcType=TIMESTAMP}, 
@@ -320,6 +327,15 @@
             </if>
             <if test="transferResult != null">
                 transfer_result,
+            </if>
+            <if test="contractImpression != null">
+                contract_impression,
+            </if>
+            <if test="contractJws != null">
+                contract_jws,
+            </if>
+            <if test="contractCure != null">
+                contract_cure,
             </if>
             <if test="nextDate != null">
                 next_date,
@@ -551,6 +567,15 @@
             <if test="transferResult != null">
                 #{transferResult,jdbcType=VARCHAR},
             </if>
+            <if test="contractImpression != null">
+                #{contractImpression,jdbcType=VARCHAR},
+            </if>
+            <if test="contractJws != null">
+                #{contractJws,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCure != null">
+                #{contractCure,jdbcType=VARCHAR},
+            </if>
             <if test="nextDate != null">
                 #{nextDate,jdbcType=DATE},
             </if>
@@ -781,6 +806,15 @@
             <if test="transferResult != null">
                 transfer_result = #{transferResult,jdbcType=VARCHAR},
             </if>
+            <if test="contractImpression != null">
+                contract_impression = #{contractImpression,jdbcType=VARCHAR},
+            </if>
+            <if test="contractJws != null">
+                contract_jws = #{contractJws,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCure != null">
+                contract_cure = #{contractCure,jdbcType=VARCHAR},
+            </if>
             <if test="nextDate != null">
                 next_date = #{nextDate,jdbcType=DATE},
             </if>
@@ -911,6 +945,9 @@
       contract_name = #{contractName,jdbcType=VARCHAR},
       contract_tel = #{contractTel,jdbcType=VARCHAR},
       transfer_result = #{transferResult,jdbcType=VARCHAR},
+      contract_impression = #{contractImpression,jdbcType=VARCHAR},
+      contract_jws = #{contractJws,jdbcType=VARCHAR},
+      contract_cure = #{contractCure,jdbcType=VARCHAR},
       next_date = #{nextDate,jdbcType=DATE},
       jumin_name = #{juminName,jdbcType=VARCHAR},
       jumin_name_url = #{juminNameUrl,jdbcType=VARCHAR},

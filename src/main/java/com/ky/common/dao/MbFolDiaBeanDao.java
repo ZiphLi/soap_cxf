@@ -1,10 +1,12 @@
 package com.ky.common.dao;
 
+
 import com.ky.common.bean.MbFolDiaBean;
 
 import java.util.List;
 
 public interface MbFolDiaBeanDao {
+
     int deleteByPrimaryKey(String id);
 
     int insert(MbFolDiaBean record);
@@ -19,8 +21,10 @@ public interface MbFolDiaBeanDao {
 
     /**
      * 通过ehr_id查
+     *
      * @param ehrId
      * @return
      */
     List<MbFolDiaBean> getDiabeListByEhrId(String ehrId);
+
 }

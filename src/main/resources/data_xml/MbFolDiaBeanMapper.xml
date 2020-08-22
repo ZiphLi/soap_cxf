@@ -45,6 +45,8 @@
         <result column="GHb" property="ghb" jdbcType="DOUBLE"/>
         <result column="GHb_date" property="ghbDate" jdbcType="DATE"/>
         <result column="GHb_other" property="ghbOther" jdbcType="VARCHAR"/>
+        <result column="ch_xt" property="chXt" jdbcType="VARCHAR"/>
+        <result column="sj_xt" property="sjXt" jdbcType="VARCHAR"/>
         <result column="insulin_variety" property="insulinVariety" jdbcType="VARCHAR"/>
         <result column="insulin_directions" property="insulinDirections" jdbcType="VARCHAR"/>
         <result column="medication" property="medication" jdbcType="OTHER"/>
@@ -63,6 +65,9 @@
         <result column="contract_name" property="contractName" jdbcType="VARCHAR"/>
         <result column="contract_tel" property="contractTel" jdbcType="VARCHAR"/>
         <result column="transfer_result" property="transferResult" jdbcType="VARCHAR"/>
+        <result column="contract_impression" property="contractImpression" jdbcType="VARCHAR"/>
+        <result column="contract_jws" property="contractJws" jdbcType="VARCHAR"/>
+        <result column="contract_cure" property="contractCure" jdbcType="VARCHAR"/>
         <result column="next_date" property="nextDate" jdbcType="DATE"/>
         <result column="jumin_name" property="juminName" jdbcType="VARCHAR"/>
         <result column="jumin_name_url" property="juminNameUrl" jdbcType="VARCHAR"/>
@@ -95,15 +100,15 @@
     low_pressure, height, weight, weight_exp, bmi, bmi_exp, heart_rate, foot_pulstates, 
     foot_pilstates_where, sign_other, count_cigarette, count_cigarette_exp, count_wine, 
     count_wine_exp, exercise, frequency, exercise_exp, frequency_exp, staple_food, stable_food_exp, 
-    psy_recovery, treatment_compliance, glu, GHb, GHb_date, GHb_other, insulin_variety, 
-    insulin_directions, medication, medication_exp, medication_compliance, adverce_reaction_code, 
-    adverce_reaction_detail, hypoglycemia_reaction, classify_follow_up, classify_follow_up1, 
-    management_next_step, insulin_adjustmment_variety, insulin_adjustmment_directions, 
-    transfer_reason, transfer_org, contract_name, contract_tel, transfer_result, next_date, 
-    jumin_name, jumin_name_url, jkzd, is_standard, remarks, latitude, longitude, location, 
-    lost_date, lost_reason, death_date, death_reason, status, create_time, gw_sf_id, 
-    gw_sf_dah, gw_da_status, gw_da_msg, gw_up_flag, gw_up_msg, gw_up_create_time, gw_up_update_time, 
-    update_time, field
+    psy_recovery, treatment_compliance, glu, GHb, GHb_date, GHb_other, ch_xt, sj_xt, 
+    insulin_variety, insulin_directions, medication, medication_exp, medication_compliance, 
+    adverce_reaction_code, adverce_reaction_detail, hypoglycemia_reaction, classify_follow_up, 
+    classify_follow_up1, management_next_step, insulin_adjustmment_variety, insulin_adjustmment_directions, 
+    transfer_reason, transfer_org, contract_name, contract_tel, transfer_result, contract_impression, 
+    contract_jws, contract_cure, next_date, jumin_name, jumin_name_url, jkzd, is_standard, 
+    remarks, latitude, longitude, location, lost_date, lost_reason, death_date, death_reason, 
+    status, create_time, gw_sf_id, gw_sf_dah, gw_da_status, gw_da_msg, gw_up_flag, gw_up_msg, 
+    gw_up_create_time, gw_up_update_time, update_time, field
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -111,7 +116,8 @@
         from mb_fol_diabetes
         where id = #{id,jdbcType=VARCHAR}
     </select>
-    <!--通过ehr_id查随访记录-->
+
+
     <select id="getDiabeListByEhrId" resultMap="BaseResultMap">
         select * from mb_fol_diabetes where
         and ehr_id = #{ehrId,jdbcType=VARCHAR}
@@ -136,13 +142,15 @@
       exercise_exp, frequency_exp, staple_food, 
       stable_food_exp, psy_recovery, treatment_compliance, 
       glu, GHb, GHb_date, GHb_other, 
-      insulin_variety, insulin_directions, medication, 
-      medication_exp, medication_compliance, adverce_reaction_code, 
+      ch_xt, sj_xt, insulin_variety, 
+      insulin_directions, medication, medication_exp, 
+      medication_compliance, adverce_reaction_code, 
       adverce_reaction_detail, hypoglycemia_reaction, 
       classify_follow_up, classify_follow_up1, management_next_step, 
       insulin_adjustmment_variety, insulin_adjustmment_directions, 
       transfer_reason, transfer_org, contract_name, 
-      contract_tel, transfer_result, next_date, 
+      contract_tel, transfer_result, contract_impression, 
+      contract_jws, contract_cure, next_date, 
       jumin_name, jumin_name_url, jkzd, 
       is_standard, remarks, latitude, 
       longitude, location, lost_date, 
@@ -166,13 +174,15 @@
       #{exerciseExp,jdbcType=VARCHAR}, #{frequencyExp,jdbcType=VARCHAR}, #{stapleFood,jdbcType=VARCHAR}, 
       #{stableFoodExp,jdbcType=VARCHAR}, #{psyRecovery,jdbcType=VARCHAR}, #{treatmentCompliance,jdbcType=VARCHAR}, 
       #{glu,jdbcType=DOUBLE}, #{ghb,jdbcType=DOUBLE}, #{ghbDate,jdbcType=DATE}, #{ghbOther,jdbcType=VARCHAR}, 
-      #{insulinVariety,jdbcType=VARCHAR}, #{insulinDirections,jdbcType=VARCHAR}, #{medication,jdbcType=OTHER}, 
-      #{medicationExp,jdbcType=OTHER}, #{medicationCompliance,jdbcType=VARCHAR}, #{adverceReactionCode,jdbcType=VARCHAR}, 
+      #{chXt,jdbcType=VARCHAR}, #{sjXt,jdbcType=VARCHAR}, #{insulinVariety,jdbcType=VARCHAR}, 
+      #{insulinDirections,jdbcType=VARCHAR}, #{medication,jdbcType=OTHER}, #{medicationExp,jdbcType=OTHER}, 
+      #{medicationCompliance,jdbcType=VARCHAR}, #{adverceReactionCode,jdbcType=VARCHAR}, 
       #{adverceReactionDetail,jdbcType=VARCHAR}, #{hypoglycemiaReaction,jdbcType=VARCHAR}, 
       #{classifyFollowUp,jdbcType=VARCHAR}, #{classifyFollowUp1,jdbcType=VARCHAR}, #{managementNextStep,jdbcType=VARCHAR}, 
       #{insulinAdjustmmentVariety,jdbcType=VARCHAR}, #{insulinAdjustmmentDirections,jdbcType=VARCHAR}, 
       #{transferReason,jdbcType=VARCHAR}, #{transferOrg,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, 
-      #{contractTel,jdbcType=VARCHAR}, #{transferResult,jdbcType=VARCHAR}, #{nextDate,jdbcType=DATE}, 
+      #{contractTel,jdbcType=VARCHAR}, #{transferResult,jdbcType=VARCHAR}, #{contractImpression,jdbcType=VARCHAR}, 
+      #{contractJws,jdbcType=VARCHAR}, #{contractCure,jdbcType=VARCHAR}, #{nextDate,jdbcType=DATE}, 
       #{juminName,jdbcType=VARCHAR}, #{juminNameUrl,jdbcType=VARCHAR}, #{jkzd,jdbcType=VARCHAR}, 
       #{isStandard,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
       #{longitude,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{lostDate,jdbcType=TIMESTAMP}, 
@@ -315,6 +325,12 @@
             <if test="ghbOther != null">
                 GHb_other,
             </if>
+            <if test="chXt != null">
+                ch_xt,
+            </if>
+            <if test="sjXt != null">
+                sj_xt,
+            </if>
             <if test="insulinVariety != null">
                 insulin_variety,
             </if>
@@ -368,6 +384,15 @@
             </if>
             <if test="transferResult != null">
                 transfer_result,
+            </if>
+            <if test="contractImpression != null">
+                contract_impression,
+            </if>
+            <if test="contractJws != null">
+                contract_jws,
+            </if>
+            <if test="contractCure != null">
+                contract_cure,
             </if>
             <if test="nextDate != null">
                 next_date,
@@ -575,6 +600,12 @@
             <if test="ghbOther != null">
                 #{ghbOther,jdbcType=VARCHAR},
             </if>
+            <if test="chXt != null">
+                #{chXt,jdbcType=VARCHAR},
+            </if>
+            <if test="sjXt != null">
+                #{sjXt,jdbcType=VARCHAR},
+            </if>
             <if test="insulinVariety != null">
                 #{insulinVariety,jdbcType=VARCHAR},
             </if>
@@ -628,6 +659,15 @@
             </if>
             <if test="transferResult != null">
                 #{transferResult,jdbcType=VARCHAR},
+            </if>
+            <if test="contractImpression != null">
+                #{contractImpression,jdbcType=VARCHAR},
+            </if>
+            <if test="contractJws != null">
+                #{contractJws,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCure != null">
+                #{contractCure,jdbcType=VARCHAR},
             </if>
             <if test="nextDate != null">
                 #{nextDate,jdbcType=DATE},
@@ -835,6 +875,12 @@
             <if test="ghbOther != null">
                 GHb_other = #{ghbOther,jdbcType=VARCHAR},
             </if>
+            <if test="chXt != null">
+                ch_xt = #{chXt,jdbcType=VARCHAR},
+            </if>
+            <if test="sjXt != null">
+                sj_xt = #{sjXt,jdbcType=VARCHAR},
+            </if>
             <if test="insulinVariety != null">
                 insulin_variety = #{insulinVariety,jdbcType=VARCHAR},
             </if>
@@ -888,6 +934,15 @@
             </if>
             <if test="transferResult != null">
                 transfer_result = #{transferResult,jdbcType=VARCHAR},
+            </if>
+            <if test="contractImpression != null">
+                contract_impression = #{contractImpression,jdbcType=VARCHAR},
+            </if>
+            <if test="contractJws != null">
+                contract_jws = #{contractJws,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCure != null">
+                contract_cure = #{contractCure,jdbcType=VARCHAR},
             </if>
             <if test="nextDate != null">
                 next_date = #{nextDate,jdbcType=DATE},
@@ -1011,6 +1066,8 @@
       GHb = #{ghb,jdbcType=DOUBLE},
       GHb_date = #{ghbDate,jdbcType=DATE},
       GHb_other = #{ghbOther,jdbcType=VARCHAR},
+      ch_xt = #{chXt,jdbcType=VARCHAR},
+      sj_xt = #{sjXt,jdbcType=VARCHAR},
       insulin_variety = #{insulinVariety,jdbcType=VARCHAR},
       insulin_directions = #{insulinDirections,jdbcType=VARCHAR},
       medication = #{medication,jdbcType=OTHER},
@@ -1029,6 +1086,9 @@
       contract_name = #{contractName,jdbcType=VARCHAR},
       contract_tel = #{contractTel,jdbcType=VARCHAR},
       transfer_result = #{transferResult,jdbcType=VARCHAR},
+      contract_impression = #{contractImpression,jdbcType=VARCHAR},
+      contract_jws = #{contractJws,jdbcType=VARCHAR},
+      contract_cure = #{contractCure,jdbcType=VARCHAR},
       next_date = #{nextDate,jdbcType=DATE},
       jumin_name = #{juminName,jdbcType=VARCHAR},
       jumin_name_url = #{juminNameUrl,jdbcType=VARCHAR},

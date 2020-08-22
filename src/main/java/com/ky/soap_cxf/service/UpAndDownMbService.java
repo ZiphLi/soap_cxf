@@ -99,10 +99,10 @@ public class UpAndDownMbService {
                             System.err.println(sfz + "--" + xm + "是高血压");
                             //添加高血压管理卡(更新ehrBean)
                             uploadGxyGlk(ehrBean, IDMap, wdEhr);
-                            //获取人员全部高血压随访记录
-//                        JSONArray GxyMsg = CxfClient.getGxyFollow(IDMap, personID);
-//                        //遍历人员全部高血压随访记录并添加或更新
-//                        uploadGxy(IDMap, GxyMsg, ehrId);
+                            //调接口58-1 获取人员全部高血压随访记录
+                            JSONArray GxyMsg = CxfClient.getGxyFollow(IDMap, personID);
+                            //遍历人员全部高血压随访记录并添加或更新
+                            uploadGxy(IDMap, GxyMsg, ehrId);
                         }
 //                    //糖尿病 TT
 //                    if (wdEhr.get("TT").toString().contains("糖")) {
@@ -268,19 +268,6 @@ public class UpAndDownMbService {
             //method
             String method = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_method");
             IDMap.put("method", method);
-//
-//            //获取用户名
-//            String username = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_username");
-//            IDMap.put("username", username);
-//            //获取密码
-//            String password = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_password");
-//            IDMap.put("password", password);
-//            //url
-//            String url = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_url");
-//            IDMap.put("url", url);
-//            //productCode
-//            String productCode = PropertiesLoaderUtils.loadAllProperties("common/common.properties").getProperty("mb_productCode");
-//            IDMap.put("productCode", productCode);
 
         } catch (IOException e) {
             e.printStackTrace();
