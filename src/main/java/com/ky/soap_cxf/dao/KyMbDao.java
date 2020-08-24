@@ -160,7 +160,9 @@ public class KyMbDao {
         //follow_up_style	随访方式
         mbGxy.setFollowUpStyle(gxyFolDetail.getJSONObject("cmHypertension").get("WayUp").toString());
         //follow_up_date	随访日期
-        mbGxy.setFollowUpDate(DateUtil.getFormatDateTimeStringForDate(GxyFol.get("FollowUpDateStr").toString()));
+        if (GxyFol.get("FollowUpDateStr").toString().length() > 8) {
+            mbGxy.setFollowUpDate(DateUtil.getFormatDateTimeStringForDate(GxyFol.get("FollowUpDateStr").toString()));
+        }
         //symptom	症状
         mbGxy.setSymptom(GxyFol.get("SymptomStr").toString());
         //symptom_other	其他症状
@@ -176,9 +178,14 @@ public class KyMbDao {
             mbGxy.setLowPressure(Integer.parseInt(Dbp));
         }
         //身高
+        DecimalFormat df = new DecimalFormat("######0.00");
         String Height = StringUtil.getRealStringByStr(gxyFolDetail.getJSONObject("examBody").get("Height").toString());
         if (!StringUtil.isEmpty(Height)) {
-            mbGxy.setHeight(Double.parseDouble(Height));
+            try {
+                mbGxy.setHeight(Double.parseDouble(Height));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         //体重
         String Weight = StringUtil.getRealStringByStr(gxyFolDetail.getJSONObject("examBody").get("Weight").toString());
@@ -191,15 +198,15 @@ public class KyMbDao {
             mbGxy.setWeightExp(Double.parseDouble(NextWeight));
         }
         //bmi
-        DecimalFormat df = new DecimalFormat("######0.00");
         String Bmi = StringUtil.getRealStringByStr(gxyFolDetail.getJSONObject("examBody").get("Bmi").toString());
         if (!StringUtil.isEmpty(Bmi)) {
-            mbGxy.setBmi(Double.parseDouble(Bmi));
+            mbGxy.setBmi(Double.parseDouble(df.format(Double.parseDouble(Bmi))));
         }
-
         //bmi_exp	下一次随访期望的bmi
         if (!StringUtil.isEmpty(Height) && !StringUtil.isEmpty(NextWeight)) {
-            mbGxy.setBmiExp(StringUtil.getBmi(Double.parseDouble(Height), Double.parseDouble(NextWeight)));//下次随访期望bmi double
+            Double nextBmi = Double.parseDouble(df.format(StringUtil.getBmi(Double.parseDouble(Height), Double.parseDouble(NextWeight))));
+            //下次随访期望bmi double
+            mbGxy.setBmiExp(nextBmi);
         }
         //heart_rate	心率
         String HeartRate = StringUtil.getRealStringByStr(gxyFolDetail.getJSONObject("examBody").get("HeartRate").toString());
@@ -294,23 +301,24 @@ public class KyMbDao {
         mbGxy.setMedicationCompliance(gxyFolDetail.getJSONObject("cmHypertension").get("FuClassification").toString());
         //classify_follow_up1	3不良反应4并发症
         //management_next_step	下一步管理措施
-
-        //transfer_reason	转诊原因
-
-        //transfer_org	转诊机构和科别
-
-        //contract_name	转诊联系人
-
-        //contract_tel	联系人电话
-
-        //transfer_result	转诊结果
-
-        //contract_impression	初步印象 四川公卫
-
-        //contract_jws	既往史 四川公卫
-
-        //contract_cure	治疗经过 四川公卫
-
+        if (gxyFolDetail.has("transout") && gxyFolDetail.get("transout").toString().length() > 4) {
+            JSONObject transout = gxyFolDetail.getJSONObject("transout");
+            //transfer_reason	转诊原因
+            mbGxy.setTransferReason(transout.get("TranoutReasons").toString());
+            //transfer_org	转诊机构和科别
+            mbGxy.setTransferOrg(transout.get("TargetOrgName").toString() + transout.get("TargetDeptName").toString());
+            //contract_name	转诊联系人
+            mbGxy.setContractName(transout.get("DoctorName").toString());
+            //contract_tel	联系人电话
+            mbGxy.setContractTel(transout.get("DoctorTel").toString());
+            //transfer_result	转诊结果
+            //contract_impression	初步印象 四川公卫
+            mbGxy.setContractImpression(transout.get("InitialImpression").toString());
+            //contract_jws	既往史 四川公卫
+            mbGxy.setContractJws(transout.get("DiseaseHistory").toString());
+            //contract_cure	治疗经过 四川公卫
+            mbGxy.setContractCure(transout.get("Treatment").toString());
+        }
         //next_date	下次随访时间
         if (gxyFolDetail.getJSONObject("cmHypertension").get("NextFollowUpDate").toString().length() > 6) {
             mbGxy.setNextDate(MbHelp.encodeNextDate(gxyFolDetail.getJSONObject("cmHypertension").get("NextFollowUpDate").toString()));
@@ -318,11 +326,8 @@ public class KyMbDao {
         //jumin_name	被随访人签名
         mbGxy.setJuminName(GxyFol.get("PersonName").toString());
         //jumin_name_url	被随访人签名照
-
         //is_standard	随访是否标准
-
         //jkzd	健康指导
-
         //remarks	备注
         //longitude	经度
         //latitude	纬度

@@ -58,8 +58,10 @@ public class CxfClient {
             JSONObject resultJson = new JSONObject(resultStr);
             try {
                 Msg = resultJson.getJSONArray("Msg");
-            }catch (Exception e){
-                System.err.println(Msg);
+            } catch (Exception e) {
+                System.err.println(resultJson);
+                e.printStackTrace();
+
             }
         }
         return Msg;

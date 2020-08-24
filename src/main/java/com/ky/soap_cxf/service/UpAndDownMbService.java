@@ -177,7 +177,7 @@ public class UpAndDownMbService {
         String ID = gxyGlkMsg.get("ID").toString();
         //调接口 57-7 更新档案表 获取心脑肾状态
         JSONObject personMbMc = CxfClient.getPerSonMbMc(IDMap, ID);
-        if (personMbMc.get("cmHyLevel") != null) {
+        if (personMbMc.get("cmHyLevel").toString().length() > 4) {
             String TargetOrganDamage = personMbMc.getJSONObject("cmHyLevel").get("TargetOrganDamage").toString();
             //更新档案(心脑肾)
             if (TargetOrganDamage != null && !TargetOrganDamage.equals("null")) {

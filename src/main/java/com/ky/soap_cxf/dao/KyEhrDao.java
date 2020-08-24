@@ -36,7 +36,7 @@ public class KyEhrDao {
         //电话
         ehr.setTel(wdEhr.get("TELPHONE").toString());
         //出生日期
-        if (coverMsg.get("BirthDay") != null) {
+        if (coverMsg.get("BirthDay").toString().length() > 8) {
             ehr.setBirthday(DateUtil.getFormatDateTimeStringForDate(coverMsg.get("BirthDay").toString()));
         }
         //民族
