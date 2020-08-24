@@ -40,13 +40,14 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
 
-    <!--通过身份证查找-->
-    <select id="selectBySfz" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <!--通过gwDah查找-->
+    <select id="selectByGwDah" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from com_ehr
-        where idno = #{sfz,jdbcType=VARCHAR}
+        where gw_dah = #{gw_dah,jdbcType=VARCHAR}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from com_ehr
     where id = #{id,jdbcType=VARCHAR}

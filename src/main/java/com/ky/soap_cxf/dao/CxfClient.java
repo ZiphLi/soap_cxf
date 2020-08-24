@@ -56,7 +56,11 @@ public class CxfClient {
             Object[] parameters = new Object[]{TradeCode, InputParameter};
             String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
             JSONObject resultJson = new JSONObject(resultStr);
-            Msg = resultJson.getJSONArray("Msg");
+            try {
+                Msg = resultJson.getJSONArray("Msg");
+            }catch (Exception e){
+                System.err.println(Msg);
+            }
         }
         return Msg;
 
@@ -98,7 +102,7 @@ public class CxfClient {
         String TradeCode = "58-3";
         String InputParameter = "{\n" +
                 "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
-                "\"PersonID\":\"" + ID + "\"\n" +
+                "\"ID\":\"" + ID + "\"\n" +
                 "}";
         Object[] parameters = new Object[]{TradeCode, InputParameter};
         String resultStr = InvokeRemoteHelp.invokeRemoteMethod(url, method, parameters)[0].toString();
@@ -191,7 +195,7 @@ public class CxfClient {
                 "\"ProductCode\":\"" + IDMap.get("productCode").toString() + "\",\n" +
                 "\"RegionID\":\"" + IDMap.get("RegionCode").toString() + "\",\n" +
                 "\"BuildType\":\"高血压\",\n" +
-                "\"KeyValue\":\"" + wdEhr.get("CARD_ID").toString() + "\",\n" +
+                "\"PersonID\":\"" + wdEhr.get("ID").toString() + "\",\n" +
                 "\"PageSize\":\"100\",\n" +
                 "\"PageIndex\":\"0\"\n" +
                 "}";

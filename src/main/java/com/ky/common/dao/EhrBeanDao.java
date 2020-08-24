@@ -18,10 +18,10 @@ public interface EhrBeanDao {
     int updateByPrimaryKey(EhrBean record);
 
     /**
-     * 通过sfz查
+     * 通过gwDah查
      *
-     * @param sfz
+     * @param gw_dah
      * @return
      */
-    List<EhrBean> selectBySfz(String sfz);
+    List<EhrBean> selectByGwDah(String gw_dah);
 }

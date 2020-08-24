@@ -105,8 +105,8 @@
 
     <!--通过ehr_id 查随访-->
     <select id="getHyperListByEhrId" resultMap="BaseResultMap">
-        select * from mb_fol_hypertension where
-        and ehr_id = #{ehrId,jdbcType=VARCHAR}
+        select * from mb_fol_hypertension
+        where ehr_id = #{ehrId,jdbcType=VARCHAR}
         order by follow_up_date asc ;
     </select>
 

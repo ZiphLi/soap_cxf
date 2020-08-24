@@ -196,8 +196,12 @@ public class EhrHelp {
         if (wdEhr.get("TG").toString().contains("高")) {
             mbType.append("高血压,");
         }
-        if (Integer.parseInt(wdEhr.get("AGE").toString().replace("岁", "").replace("月", "").replace("天","").replaceAll(" ", "")) >= 65) {
-            mbType.append("老年人,");
+        try {
+            if (Integer.parseInt(wdEhr.get("AGE").toString().replace("岁", "").replace("月", "").replace("天", "").replaceAll(" ", "")) >= 65) {
+                mbType.append("老年人,");
+            }
+        }catch (Exception e){
+            //年龄为汉字(如:未知)
         }
         String mbTypeStr = mbType.toString();
         if (mbTypeStr.endsWith(",")) {
